@@ -9,18 +9,18 @@ namespace View
         public Text regularScore;
         public Text starScore;
 
-        [SerializeField]private Animator animator;
-        
+        [SerializeField] private Animator animator;
+
         private int _levelNumber;
-        
+
         private ScoreSetter _scoreSetter;
         private AnimationChanger _animationChanger;
 
-        public UiManager( int levelNumber)
+        public UiManager(int levelNumber)
         {
             _levelNumber = levelNumber;
         }
-        
+
         private void Start()
         {
             var scoreSetter = new ScoreSetter();
@@ -45,6 +45,5 @@ namespace View
         {
             Application.Quit();
         }
-
     }
 }
