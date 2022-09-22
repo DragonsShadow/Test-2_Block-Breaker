@@ -1,22 +1,23 @@
 using Model;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Logic
 {
     public class ScoreSetter
     {
-        private PlayerScores _playerScores;
+        private static PlayerScores _playerScores;
 
-        void RegularScoreSet(int regularScore)
+        public void RegularScoreSet(Text regularScore)
         {
             _playerScores = Resources.Load<PlayerScores>("Scores/PlayerScores");
-            regularScore = _playerScores.RegularScore;
+            regularScore.text = _playerScores.RegularScore.ToString();
         }
 
-        void StarScoreSet(int starScore)
+        public void StarScoreSet(Text starScore)
         {
             _playerScores = Resources.Load<PlayerScores>("Scores/PlayerScores");
-            starScore = _playerScores.StarScore;
+            starScore.text = _playerScores.StarScore.ToString();
         }
     }
 }
