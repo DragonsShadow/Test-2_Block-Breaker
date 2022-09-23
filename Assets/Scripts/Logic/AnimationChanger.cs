@@ -7,13 +7,15 @@ namespace Logic
         private static readonly int Start = Animator.StringToHash("Start");
         private static readonly int Setting = Animator.StringToHash("Setting");
 
-        void StartAnimationChange(Animator animator)
+        public void StartAnimationChange(Animator animator)
         {
             animator.SetBool(Start, true);
+            animator.SetBool(Setting, false);
         }
 
-        void SettingAnimationChange(Animator animator)
+        public void SettingAnimationChange(Animator animator)
         {
+            animator.SetBool(Start, false);
             animator.SetBool(Setting, true);
         }
     }
