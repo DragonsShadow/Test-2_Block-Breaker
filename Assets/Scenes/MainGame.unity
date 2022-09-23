@@ -1134,6 +1134,7 @@ GameObject:
   m_Component:
   - component: {fileID: 821775783}
   - component: {fileID: 821775784}
+  - component: {fileID: 821775785}
   m_Layer: 0
   m_Name: Game Managr
   m_TagString: Untagged
@@ -1149,7 +1150,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 821775782}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.6441515, y: 0.6934223, z: -13.445819}
+  m_LocalPosition: {x: -7.33, y: 2.96, z: -13.445819}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1167,7 +1168,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0aaf55883ffd5ef4baf653c33efdf9bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _levelManager: {fileID: 11400000, guid: caf0d3c2185532f4488eb30e716c094f, type: 2}
+  playerWinOrLoseMessage: {fileID: 0}
+  playerWinOrLoseMessageObject: {fileID: 0}
+  _grid: {fileID: 821775785}
+--- !u!156049354 &821775785
+Grid:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 821775782}
+  m_Enabled: 1
+  m_CellSize: {x: 2, y: 1, z: 1}
+  m_CellGap: {x: 0, y: 0, z: 0}
+  m_CellLayout: 0
+  m_CellSwizzle: 0
 --- !u!1 &1088158525
 GameObject:
   m_ObjectHideFlags: 0
