@@ -5,8 +5,13 @@ namespace Model
     [CreateAssetMenu(fileName = "Level", menuName = "Level", order = 2)]
     public class Level : ScriptableObject
     {
-        public static int BlockRows = 4;
-        public static int BlockColumns = 8;
-        public readonly GameObject[,] Blocks = new GameObject[BlockRows,BlockColumns];
+        public int BlockRows = 4;
+        public  int BlockColumns = 8;
+        public readonly GameObject[,] Blocks;
+
+        public Level()
+        {
+            Blocks = new GameObject[BlockRows,BlockColumns];
+        }
     }
 }

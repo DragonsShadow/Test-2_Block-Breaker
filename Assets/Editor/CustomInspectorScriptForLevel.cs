@@ -6,7 +6,7 @@ using UnityEngine;
 namespace Editor
 {
     [CustomEditor(typeof(Level))]
-    public class CustomScriptInscpector : UnityEditor.Editor
+    public class CustomInspectorScriptForLevel : UnityEditor.Editor
     {
         Level _targetScript;
 
@@ -14,18 +14,17 @@ namespace Editor
         {
             _targetScript = target as Level;
         }
-
         [Obsolete("Obsolete")]
         public override void OnInspectorGUI()
         {
-            Level.BlockRows = EditorGUILayout.IntField(Level.BlockRows);
-            Level.BlockColumns = EditorGUILayout.IntField(Level.BlockColumns);
+            _targetScript.BlockRows = EditorGUILayout.IntField(_targetScript.BlockRows);
+            _targetScript.BlockColumns = EditorGUILayout.IntField(_targetScript.BlockColumns);
 
             EditorGUILayout.BeginHorizontal();
-            for (int y = 0; y < Level.BlockColumns; y++)
+            for (int y = 0; y < _targetScript.BlockColumns; y++)
             {
                 EditorGUILayout.BeginVertical();
-                for (int x = 0; x < Level.BlockRows; x++)
+                for (int x = 0; x < _targetScript.BlockRows; x++)
                 {
                     _targetScript.Blocks[x, y] =
                         (GameObject)EditorGUILayout.ObjectField(_targetScript.Blocks[x, y], typeof(GameObject));
