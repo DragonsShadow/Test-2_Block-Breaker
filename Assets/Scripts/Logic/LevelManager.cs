@@ -7,11 +7,16 @@ namespace Logic
     {
         private static LevelManageData _levelManageData;
         private static GameObject _tempCreatingBlock;
-        private static int _tempCreatingDataBlockObjectNumber = 0;
-        private static int _tempCreatingDataBlockRowNumber = 0;
-        public static GameObject LevelAssembleDataSend()
+        private static int _tempCreatingDataBlockObjectNumber ;
+        private static int _tempCreatingDataBlockRowNumber ;
+
+         public LevelManager()
         {
             _levelManageData = Resources.Load<LevelManageData>("LevelManageDatas/LevelManageData");
+        }
+        public static GameObject LevelAssembleDataSend()
+        {
+            
             if (_tempCreatingDataBlockObjectNumber >= 8)
             {
                 _tempCreatingDataBlockObjectNumber = 0;
