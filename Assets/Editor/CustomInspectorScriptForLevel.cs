@@ -16,17 +16,18 @@ namespace Editor
         }
         public override void OnInspectorGUI()
         {
-            _targetScript.BlockRows = EditorGUILayout.IntField(_targetScript.BlockRows);
-            _targetScript.BlockColumns = EditorGUILayout.IntField(_targetScript.BlockColumns);
+            _targetScript.blockRows = EditorGUILayout.IntField(_targetScript.blockRows);
+            _targetScript.blockColumns = EditorGUILayout.IntField(_targetScript.blockColumns);
 
             EditorGUILayout.BeginHorizontal();
-            for (int y = 0; y < _targetScript.BlockColumns; y++)
+            for (int y = 0; y < _targetScript.blockColumns; y++)
             {
                 EditorGUILayout.BeginVertical();
-                for (int x = 0; x < _targetScript.BlockRows; x++)
+                for (int x = 0; x < _targetScript.blockRows; x++)
                 {
                     _targetScript.Blocks[x, y] =
                         (GameObject)EditorGUILayout.ObjectField(_targetScript.Blocks[x, y], typeof(GameObject), true);
+                    
                 }
 
                 EditorGUILayout.EndVertical();
