@@ -14,7 +14,6 @@ namespace Editor
         {
             _targetScript = target as Level;
         }
-        [Obsolete("Obsolete")]
         public override void OnInspectorGUI()
         {
             _targetScript.BlockRows = EditorGUILayout.IntField(_targetScript.BlockRows);
@@ -27,7 +26,7 @@ namespace Editor
                 for (int x = 0; x < _targetScript.BlockRows; x++)
                 {
                     _targetScript.Blocks[x, y] =
-                        (GameObject)EditorGUILayout.ObjectField(_targetScript.Blocks[x, y], typeof(GameObject));
+                        (GameObject)EditorGUILayout.ObjectField(_targetScript.Blocks[x, y], typeof(GameObject), true);
                 }
 
                 EditorGUILayout.EndVertical();

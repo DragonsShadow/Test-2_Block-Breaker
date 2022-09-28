@@ -1,4 +1,3 @@
-using System;
 using Model;
 using UnityEditor;
 
@@ -13,8 +12,6 @@ namespace Editor
         {
             _targetScript = target as LevelManageData;
         }
-
-        [Obsolete("Obsolete")]
         public override void OnInspectorGUI()
         {
             _targetScript.levelNumber = EditorGUILayout.IntField(_targetScript.levelNumber);
@@ -22,7 +19,7 @@ namespace Editor
             for (int x = 0; x < _targetScript.levelNumber; x++)
             {
                 _targetScript.Levels[x] =
-                    (Level)EditorGUILayout.ObjectField(_targetScript.Levels[x], typeof(Level));
+                    (Level)EditorGUILayout.ObjectField(_targetScript.Levels[x], typeof(Level) , true);
             }
 
             EditorGUILayout.EndVertical();
