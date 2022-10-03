@@ -12,5 +12,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 171906877bc74ad3adecd34fb6cda43a, type: 3}
   m_Name: Level-1
   m_EditorClassIdentifier: 
-  blockRows: 4
-  blockColumns: 8

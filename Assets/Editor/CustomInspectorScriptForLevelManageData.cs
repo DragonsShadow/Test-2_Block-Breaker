@@ -14,6 +14,7 @@ namespace Editor
         }
         public override void OnInspectorGUI()
         {
+            base.OnInspectorGUI();
             LevelManageData.LevelNumber = EditorGUILayout.IntField(LevelManageData.LevelNumber);
             EditorGUILayout.BeginVertical();
             for (int x = 0; x < LevelManageData.LevelNumber; x++)
