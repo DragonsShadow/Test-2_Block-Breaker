@@ -14,12 +14,12 @@ namespace Editor
         }
         public override void OnInspectorGUI()
         {
-            _targetScript.levelNumber = EditorGUILayout.IntField(_targetScript.levelNumber);
+            LevelManageData.levelNumber = EditorGUILayout.IntField(LevelManageData.levelNumber);
             EditorGUILayout.BeginVertical();
-            for (int x = 0; x < _targetScript.levelNumber; x++)
+            for (int x = 0; x < LevelManageData.levelNumber; x++)
             {
                 _targetScript.Levels[x] =
-                    (Level)EditorGUILayout.ObjectField(_targetScript.Levels[x], typeof(Level) , true);
+                    (Level)EditorGUILayout.ObjectField(_targetScript.Levels[x], typeof(Level) , false);
             }
 
             EditorGUILayout.EndVertical();
