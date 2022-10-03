@@ -22,7 +22,7 @@ namespace Logic
                 _tempCreatingDataBlockObjectNumber = 0;
                 _tempCreatingDataBlockRowNumber += 1;
             }
-            _tempCreatingBlock = _levelManageData.Levels[0].Blocks[_tempCreatingDataBlockRowNumber,_tempCreatingDataBlockObjectNumber];
+            _tempCreatingBlock = _levelManageData.levels[0].Blocks[_tempCreatingDataBlockRowNumber,_tempCreatingDataBlockObjectNumber];
             _tempCreatingDataBlockObjectNumber += 1;
             
             return _tempCreatingBlock;
