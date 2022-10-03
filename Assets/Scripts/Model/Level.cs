@@ -22,11 +22,10 @@ namespace Model
             _tempBlocks = new List<BlockObjectRows>();
             for (int i = 0; i < BlockRows; i++)
             {
-                _tempBlocks.Add(_tempBlocks[BlockRows]);
+                _tempBlocks.Add(new BlockObjectRows());
                 for (int j = 0; j < BlockColumns; j++)
                 {
-                   _tempBlocks[i].Blocks.Add(_tempBlocks[i].Blocks[BlockColumns]);
-                   _tempBlocks[i].Blocks[j] = Blocks[i,j];
+                   _tempBlocks[i].Blocks.Add(Blocks[i,j]);
                 }
             }
         }
