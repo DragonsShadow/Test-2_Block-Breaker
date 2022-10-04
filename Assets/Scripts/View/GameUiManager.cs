@@ -1,4 +1,5 @@
 using Logic;
+using Model;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
@@ -40,9 +41,9 @@ namespace View
         private void LevelAssemble()
         {
             _tempTransformForSpawn = grid.transform.localPosition;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < Level.BlockRows; i++)
             {
-                for (int j = 0; j < 8; j++)
+                for (int j = 0; j < Level.BlockColumns; j++)
                 {
                     LevelManager.LevelAssembleDataSend();
                     if (LevelManager.TempCreatingBlock != null)
