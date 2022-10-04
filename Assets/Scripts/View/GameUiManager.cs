@@ -24,14 +24,6 @@ namespace View
             {
                 PlayerMover.PlayerMovement();
             }
-
-            if (GameObserver.WinOrLoseNotify())
-            {
-                var gameNotifier = new GameNotifier();
-                gameNotifier.LevelNameChange(_levelName);
-                gameNotifier.WinOrLoseTextChange(playerWinOrLoseMessage);
-                WinOrLoseTextShow();
-            }
         }
 
         private void WinOrLoseTextShow()
