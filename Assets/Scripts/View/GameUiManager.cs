@@ -59,7 +59,7 @@ namespace View
                             new Quaternion(0, 0, 0, 0));
                     }
 
-                    _tempTransformForSpawn += new Vector3(1, 0, 0);
+                    _tempTransformForSpawn += new Vector3(2, 0, 0);
                 }
 
                 _tempTransformForSpawn = new Vector3(grid.transform.localPosition.x, _tempTransformForSpawn.y,
