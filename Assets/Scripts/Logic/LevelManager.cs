@@ -6,26 +6,22 @@ namespace Logic
     public class LevelManager
     {
         private static LevelManageData _levelManageData;
-        private static GameObject _tempCreatingBlock;
+        public static GameObject TempCreatingBlock;
         private static int _tempCreatingDataBlockObjectNumber ;
         private static int _tempCreatingDataBlockRowNumber ;
 
-         public LevelManager()
+        public static void LevelAssembleDataSend()
         {
+            _levelManageData = ScriptableObject.CreateInstance<LevelManageData>();
             _levelManageData = Resources.Load<LevelManageData>("LevelManageDatas/LevelManageData");
-        }
-        public static GameObject LevelAssembleDataSend()
-        {
-            
             if (_tempCreatingDataBlockObjectNumber >= 8)
             {
                 _tempCreatingDataBlockObjectNumber = 0;
                 _tempCreatingDataBlockRowNumber += 1;
             }
-            _tempCreatingBlock = _levelManageData.levels[0].Blocks[_tempCreatingDataBlockRowNumber,_tempCreatingDataBlockObjectNumber];
+            TempCreatingBlock = _levelManageData.levels[0].Blocks[_tempCreatingDataBlockRowNumber,_tempCreatingDataBlockObjectNumber];
             _tempCreatingDataBlockObjectNumber += 1;
             
-            return _tempCreatingBlock;
         }
     }
 }

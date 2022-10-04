@@ -9,7 +9,7 @@ namespace View
     {
         private string _levelName;
         [SerializeField] private Text playerWinOrLoseMessage;
-        [SerializeField]private GameObject playerWinOrLoseMessageObject;
+        [SerializeField] private GameObject playerWinOrLoseMessageObject;
         [SerializeField] private Grid _grid;
 
         private void Start()
@@ -36,7 +36,7 @@ namespace View
         private void WinOrLoseTextShow()
         {
             playerWinOrLoseMessageObject.SetActive(true);
-            Invoke("WinOrLoseTextShowEnd",1f);
+            Invoke("WinOrLoseTextShowEnd", 1f);
         }
 
         private void WinOrLoseTextShowEnd()
@@ -46,14 +46,21 @@ namespace View
 
         private void LevelAssemble()
         {
-            for (int i = 0; i <= 4; i++)
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j <= 8; j++)
+                for (int j = 0; j < 8; j++)
                 {
-                    Instantiate(LevelManager.LevelAssembleDataSend(),_grid.transform.localPosition,new Quaternion(0,0,0,0));
-                    _grid.transform.localPosition += new Vector3(1,0,0);
+                    LevelManager.LevelAssembleDataSend();
+                    if (LevelManager.TempCreatingBlock != null)
+                    {
+                        Instantiate(LevelManager.TempCreatingBlock, _grid.transform.localPosition,
+                            new Quaternion(0, 0, 0, 0));
+                    }
+
+                    _grid.transform.localPosition += new Vector3(1, 0, 0);
                 }
-                _grid.transform.localPosition += new Vector3(0,-1,0);
+
+                _grid.transform.localPosition += new Vector3(0, -1, 0);
             }
         }
     }
