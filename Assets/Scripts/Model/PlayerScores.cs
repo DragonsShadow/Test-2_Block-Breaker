@@ -5,10 +5,10 @@ namespace Model
     [CreateAssetMenu(fileName = "PlayerScores", menuName = "PlayerScores", order = 0)]
     public class PlayerScores : ScriptableObject
     {
-        private int _score;
+        private static int _score;
         //score based on destroyed blocks
 
-        private int _star;
+        private static int _star;
         //score based on past levels
 
         public int Score

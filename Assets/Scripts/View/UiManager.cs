@@ -1,22 +1,23 @@
 using Logic;
+using Model;
 using UnityEngine;
+using UnityEngine.Serialization;
+using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UI;
 
 namespace View
 {
     public class UiManager : MonoBehaviour
     {
-        public Text regularScore;
-        public Text starScore;
-
+        public Text score;
+        public Text star;
+        private PlayerScores _score = new PlayerScores();
         [SerializeField] private Animator animator;
 
         private static readonly int StartBtn = Animator.StringToHash("Start");
         private static readonly int SettingBtn = Animator.StringToHash("Setting");
 
         private int _levelNumber;
-
-        private ScoreSetter _scoreSetter;
 
         public UiManager(int levelNumber)
         {
@@ -25,10 +26,7 @@ namespace View
 
         private void Start()
         {
-            var scoreSetter = new ScoreSetter();
-            _scoreSetter = scoreSetter;
-            _scoreSetter.RegularScoreSet(regularScore);
-            _scoreSetter.StarScoreSet(starScore);
+            ScoreTextSette();
         }
 
         public void GameStart()
@@ -44,6 +42,13 @@ namespace View
         public void GameQuit()
         {
             Application.Quit();
+        }
+
+        private void ScoreTextSette()
+        {
+            _score = Resources.Load<PlayerScores>("PLayerScores/PLayerScores");
+            score.text = _score.Score.ToString();
+            star.text = _score.Star.ToString();
         }
 
         private void StartAnimationChange(Animator animator)

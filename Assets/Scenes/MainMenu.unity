@@ -1681,8 +1681,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a96994736dd5437686770d728714c0b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  regularScore: {fileID: 1029263635}
-  starScore: {fileID: 901045907}
+  score: {fileID: 1029263635}
+  star: {fileID: 901045907}
   animator: {fileID: 1046514486}
 --- !u!1 &1046514481
 GameObject:
