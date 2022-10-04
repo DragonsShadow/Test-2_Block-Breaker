@@ -11,13 +11,13 @@ namespace Logic
         public void RegularScoreSet(Text regularScore)
         {
             _playerScores = Resources.Load<PlayerScores>("Scores/PlayerScores");
-            regularScore.text = _playerScores.RegularScore.ToString();
+            regularScore.text = _playerScores.Score.ToString();
         }
 
         public void StarScoreSet(Text starScore)
         {
             _playerScores = Resources.Load<PlayerScores>("Scores/PlayerScores");
-            starScore.text = _playerScores.StarScore.ToString();
+            starScore.text = _playerScores.Star.ToString();
         }
     }
 }

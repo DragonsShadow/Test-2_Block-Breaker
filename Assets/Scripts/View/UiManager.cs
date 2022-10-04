@@ -11,10 +11,12 @@ namespace View
 
         [SerializeField] private Animator animator;
 
+        private static readonly int StartBtn = Animator.StringToHash("Start");
+        private static readonly int SettingBtn = Animator.StringToHash("Setting");
+
         private int _levelNumber;
 
         private ScoreSetter _scoreSetter;
-        private AnimationChanger _animationChanger;
 
         public UiManager(int levelNumber)
         {
@@ -25,25 +27,35 @@ namespace View
         {
             var scoreSetter = new ScoreSetter();
             _scoreSetter = scoreSetter;
-            var animationChanger = new AnimationChanger();
-            _animationChanger = animationChanger;
             _scoreSetter.RegularScoreSet(regularScore);
             _scoreSetter.StarScoreSet(starScore);
         }
 
         public void GameStart()
         {
-            _animationChanger.StartAnimationChange(animator);
+            StartAnimationChange(animator);
         }
 
         public void SettingIntraction()
         {
-            _animationChanger.SettingAnimationChange(animator);
+            SettingAnimationChange(animator);
         }
 
         public void GameQuit()
         {
             Application.Quit();
+        }
+
+        private void StartAnimationChange(Animator animator)
+        {
+            animator.SetBool(StartBtn, true);
+            animator.SetBool(SettingBtn, false);
+        }
+
+        private void SettingAnimationChange(Animator animator)
+        {
+            animator.SetBool(StartBtn, false);
+            animator.SetBool(SettingBtn, true);
         }
     }
 }
