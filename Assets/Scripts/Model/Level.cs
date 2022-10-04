@@ -22,8 +22,6 @@ namespace Model
 
         public void OnBeforeSerialize()
         {
-            Debug.Log("OnBeforeSerialize Called");
-
             // convert Blocks to _tempBlocks
             _tempBlocks = new List<BlockObjectRows>();
             for (int i = 0; i < BlockRows; i++)
@@ -38,8 +36,6 @@ namespace Model
 
         public void OnAfterDeserialize()
         {
-            Debug.Log("OnAfterDeserialize Called");
-
             //convert _tempBlocks to Blocks
             for (int i = 0; i < BlockRows; i++)
             {
