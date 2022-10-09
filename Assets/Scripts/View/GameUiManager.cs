@@ -8,7 +8,9 @@ namespace View
     public class GameUiManager : MonoBehaviour
     {
         public static GameUiManager GameUiManagerInstance;
+        public int deployedBlocks;
         private string _levelName;
+        private int _levelNumber;
         [SerializeField] private Text playerWinOrLoseMessage;
         [SerializeField] private GameObject playerWinOrLoseMessageObject;
         [SerializeField] private Grid grid;
@@ -16,19 +18,19 @@ namespace View
 
         private void Awake()
         {
-            if (GameUiManagerInstance != null && GameUiManagerInstance != this) 
-            { 
-                Destroy(this); 
-            } 
-            else 
-            { 
-                GameUiManagerInstance = this; 
-            } 
+            if (GameUiManagerInstance != null && GameUiManagerInstance != this)
+            {
+                Destroy(this);
+            }
+            else
+            {
+                GameUiManagerInstance = this;
+            }
         }
 
         private void Start()
         {
-            LevelAssemble();
+            LevelGenerate();
         }
 
         private void Update()
@@ -36,6 +38,12 @@ namespace View
             if (Input.anyKey)
             {
                 PlayerMover.PlayerMovement();
+            }
+
+            if (deployedBlocks <= 0)
+            {
+                _levelNumber++;
+                LevelGenerate();
             }
         }
 
@@ -50,18 +58,19 @@ namespace View
             playerWinOrLoseMessageObject.SetActive(false);
         }
 
-        private void LevelAssemble()
+        private void LevelGenerate()
         {
             _tempTransformForSpawn = grid.transform.localPosition;
             for (int i = 0; i < Level.BlockRows; i++)
             {
                 for (int j = 0; j < Level.BlockColumns; j++)
                 {
-                    LevelManager.LevelAssembleDataSend();
+                    LevelManager.LevelAssembleDataSend(_levelNumber);
                     if (LevelManager.TempCreatingBlock != null)
                     {
                         Instantiate(LevelManager.TempCreatingBlock, _tempTransformForSpawn,
                             new Quaternion(0, 0, 0, 0));
+                        deployedBlocks++;
                     }
 
                     _tempTransformForSpawn += new Vector3(2, 0, 0);

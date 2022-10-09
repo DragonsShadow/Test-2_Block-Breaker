@@ -10,7 +10,7 @@ namespace Logic
         private static int _tempCreatingDataBlockObjectNumber ;
         private static int _tempCreatingDataBlockRowNumber ;
 
-        public static void LevelAssembleDataSend()
+        public static void LevelAssembleDataSend(int levelNumber)
         {
             _levelManageData = ScriptableObject.CreateInstance<LevelManageData>();
             _levelManageData = Resources.Load<LevelManageData>("LevelManageDatas/LevelManageData");
@@ -19,7 +19,7 @@ namespace Logic
                 _tempCreatingDataBlockObjectNumber = 0;
                 _tempCreatingDataBlockRowNumber += 1;
             }
-            TempCreatingBlock = _levelManageData.levels[0].Blocks[_tempCreatingDataBlockRowNumber,_tempCreatingDataBlockObjectNumber];
+            TempCreatingBlock = _levelManageData.levels[levelNumber].Blocks[_tempCreatingDataBlockRowNumber,_tempCreatingDataBlockObjectNumber];
             _tempCreatingDataBlockObjectNumber += 1;
             
         }
