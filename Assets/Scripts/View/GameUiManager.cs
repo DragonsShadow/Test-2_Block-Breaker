@@ -11,6 +11,7 @@ namespace View
         public int deployedBlocks;
         private string _levelName;
         private int _levelNumber;
+        [SerializeField]private Transform player;
         [SerializeField] private Text playerWinOrLoseMessage;
         [SerializeField] private GameObject playerWinOrLoseMessageObject;
         [SerializeField] private Grid grid;
@@ -37,7 +38,7 @@ namespace View
         {
             if (Input.anyKey)
             {
-                PlayerMover.PlayerMovement();
+                PlayerMover.PlayerMovement(player);
             }
 
             if (deployedBlocks <= 0)

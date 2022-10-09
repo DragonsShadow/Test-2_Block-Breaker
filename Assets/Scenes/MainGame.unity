@@ -1169,6 +1169,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deployedBlocks: 0
+  player: {fileID: 14620177}
   playerWinOrLoseMessage: {fileID: 0}
   playerWinOrLoseMessageObject: {fileID: 0}
   grid: {fileID: 821775785}
