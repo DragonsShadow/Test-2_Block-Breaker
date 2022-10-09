@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 7078179123273219966}
   - component: {fileID: 4791502733506906668}
   - component: {fileID: 3819094183173443325}
+  - component: {fileID: -6048875804182047622}
+  - component: {fileID: 9060538630648928465}
   m_Layer: 0
   m_Name: Bomb-Block
   m_TagString: Untagged
@@ -109,3 +111,36 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.02, y: 0.42}
   m_EdgeRadius: 0
+--- !u!114 &-6048875804182047622
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2578683507947988142}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8607827c126f6749a25bd7463a2727b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!50 &9060538630648928465
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2578683507947988142}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 0.0001
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 7
