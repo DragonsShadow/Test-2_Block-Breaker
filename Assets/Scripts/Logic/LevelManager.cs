@@ -14,10 +14,15 @@ namespace Logic
         {
             _levelManageData = ScriptableObject.CreateInstance<LevelManageData>();
             _levelManageData = Resources.Load<LevelManageData>("LevelManageDatas/LevelManageData");
-            if (_tempCreatingDataBlockObjectNumber >= 8)
+            if (_tempCreatingDataBlockObjectNumber >= Level.BlockColumns)
             {
                 _tempCreatingDataBlockObjectNumber = 0;
                 _tempCreatingDataBlockRowNumber += 1;
+            }
+
+            if (_tempCreatingDataBlockRowNumber >= Level.BlockRows)
+            {
+                _tempCreatingDataBlockRowNumber = 0;
             }
             TempCreatingBlock = _levelManageData.levels[levelNumber].Blocks[_tempCreatingDataBlockRowNumber,_tempCreatingDataBlockObjectNumber];
             _tempCreatingDataBlockObjectNumber += 1;

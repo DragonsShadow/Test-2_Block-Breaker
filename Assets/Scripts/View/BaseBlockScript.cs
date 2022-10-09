@@ -11,7 +11,7 @@ namespace View
             if (col.collider.tag.Equals("Ball"))
             {
                 _health -= 1;
-                GameUiManager.GameUiManagerInstance.deployedBlocks -= 1;
+                GameUiManager.deployedBlocks -= 1;
                 DestroyCheck();
             }
         }

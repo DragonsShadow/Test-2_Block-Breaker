@@ -7,8 +7,7 @@ namespace View
 {
     public class GameUiManager : MonoBehaviour
     {
-        public static GameUiManager GameUiManagerInstance;
-        public int deployedBlocks;
+        public static int deployedBlocks;
         private string _levelName;
         private int _levelNumber;
         [SerializeField]private Transform player;
@@ -16,18 +15,7 @@ namespace View
         [SerializeField] private GameObject playerWinOrLoseMessageObject;
         [SerializeField] private Grid grid;
         private Vector3 _tempTransformForSpawn = new Vector3(0, 0, 0);
-
-        private void Awake()
-        {
-            if (GameUiManagerInstance != null && GameUiManagerInstance != this)
-            {
-                Destroy(this);
-            }
-            else
-            {
-                GameUiManagerInstance = this;
-            }
-        }
+        
 
         private void Start()
         {
@@ -43,7 +31,7 @@ namespace View
 
             if (deployedBlocks <= 0)
             {
-                _levelNumber++;
+                _levelNumber += 1;
                 LevelGenerate();
             }
         }
