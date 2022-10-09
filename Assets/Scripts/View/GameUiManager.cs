@@ -1,18 +1,30 @@
 using Logic;
 using Model;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace View
 {
     public class GameUiManager : MonoBehaviour
     {
+        public static GameUiManager GameUiManagerInstance;
         private string _levelName;
         [SerializeField] private Text playerWinOrLoseMessage;
         [SerializeField] private GameObject playerWinOrLoseMessageObject;
         [SerializeField] private Grid grid;
         private Vector3 _tempTransformForSpawn = new Vector3(0, 0, 0);
+
+        private void Awake()
+        {
+            if (GameUiManagerInstance != null && GameUiManagerInstance != this) 
+            { 
+                Destroy(this); 
+            } 
+            else 
+            { 
+                GameUiManagerInstance = this; 
+            } 
+        }
 
         private void Start()
         {
