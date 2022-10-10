@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: PlayerModel
-  m_EditorClassIdentifier: Assembly-CSharp:Model:PlayerModel
-  playerStartLocation: {x: 0, y: -4.2, z: 0}
-  playerSpeed: {x: 5, y: 0, z: 0}
+  m_Script: {fileID: 11500000, guid: ea918c311f084a408bb07f42928c6c3f, type: 3}
+  m_Name: BallModel
+  m_EditorClassIdentifier: 
+  ballStartLocation: {x: 0, y: -3.8, z: 0}
+  ballFirstSpeed: {x: 50, y: -300, z: 0}

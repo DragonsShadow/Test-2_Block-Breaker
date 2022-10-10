@@ -10,23 +10,31 @@ namespace View
         public static int deployedBlocks;
         private string _levelName;
         private int _levelNumber;
-        [SerializeField]private Transform player;
+        private bool _isStarted = false;
+        [SerializeField] private Transform player;
+        [SerializeField] private Rigidbody2D ball;
         [SerializeField] private Text playerWinOrLoseMessage;
         [SerializeField] private GameObject playerWinOrLoseMessageObject;
         [SerializeField] private Grid grid;
         private Vector3 _tempTransformForSpawn = new Vector3(0, 0, 0);
-        
+
 
         private void Start()
         {
             LevelGenerate();
+            GameObjectsMover.GameReset(player.transform, ball.transform);
         }
 
         private void Update()
         {
-            if (Input.anyKey)
+            if (!_isStarted)
             {
-                PlayerMover.PlayerMovement(player);
+                _isStarted = GameObjectsMover.GameStart(ball);
+            }
+
+            if (Input.anyKey && _isStarted)
+            {
+                GameObjectsMover.PlayerMovement(player);
             }
 
             if (deployedBlocks <= 0)
