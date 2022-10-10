@@ -44,6 +44,8 @@ namespace Logic
         private static void BallFisrtMovement(Rigidbody2D ball)
         {
             ball.AddForce(_ballModel.ballFirstSpeed);
+            ball.AddForce(
+                new Vector3(Random.Range(_ballModel.minimumHorizontalRange, _ballModel.maximumHorizontalRange), 0, 0));
         }
     }
 }
