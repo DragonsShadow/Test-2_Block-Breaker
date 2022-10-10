@@ -16,12 +16,11 @@ namespace Editor
         }
         public override void OnInspectorGUI()
         {
-            // base.OnInspectorGUI();
-            
+            base.OnInspectorGUI();
             
             Level.BlockRows = EditorGUILayout.IntField(Level.BlockRows);
             Level.BlockColumns = EditorGUILayout.IntField(Level.BlockColumns);
-
+            
             EditorGUILayout.BeginHorizontal();
             for (int y = 0; y < Level.BlockColumns; y++)
             {
@@ -34,10 +33,10 @@ namespace Editor
                             false);
                     
                 }
-
+            
                 EditorGUILayout.EndVertical();
             }
-
+            
             EditorGUILayout.EndHorizontal();
         }
     }

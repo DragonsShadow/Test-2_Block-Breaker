@@ -5,7 +5,7 @@ using Vector3 = UnityEngine.Vector3;
 
 namespace Logic
 {
-    public class GameObjectsMover
+    public class LevelAndPhysicsGenerateDataManager
     {
         private static PlayerModel _playerModel;
         private static BallModel _ballModel;

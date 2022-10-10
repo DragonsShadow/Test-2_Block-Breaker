@@ -24,25 +24,25 @@ namespace View
         private void Start()
         {
             LevelGenerate();
-            GameObjectsMover.GameReset(player.transform, ball);
+            LevelAndPhysicsGenerateDataManager.GameReset(player.transform, ball);
         }
 
         private void Update()
         {
             if (!_isStarted)
             {
-                _isStarted = GameObjectsMover.GameStart(ball);
+                _isStarted = LevelAndPhysicsGenerateDataManager.GameStart(ball);
             }
 
             if (Input.anyKey && _isStarted)
             {
-                GameObjectsMover.PlayerMovement(player);
+                LevelAndPhysicsGenerateDataManager.PlayerMovement(player);
             }
 
             if (DeployedBlocks <= 0)
             {
                 NextLevelInitialises();
-                GameObjectsMover.GameReset(player.transform, ball);
+                LevelAndPhysicsGenerateDataManager.GameReset(player.transform, ball);
                 LevelGenerate();
             }
         }
@@ -61,7 +61,7 @@ namespace View
         private void NextLevelInitialises()
         {
             _isStarted = false;
-            GameObjectsMover._isStarted = false;
+            LevelAndPhysicsGenerateDataManager._isStarted = false;
             _levelNumber += 1;
         }
 
