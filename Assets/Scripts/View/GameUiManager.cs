@@ -8,16 +8,18 @@ namespace View
     public class GameUiManager : MonoBehaviour
     {
         public static int DeployedBlocks;
+
         private string _levelName;
         private int _levelNumber;
-        private bool _isStarted = false;
+        private bool _isStarted;
+
+        private Vector3 _tempTransformForSpawn = new Vector3(0, 0, 0);
+
         [SerializeField] private Transform player;
         [SerializeField] private Rigidbody2D ball;
         [SerializeField] private Text playerWinOrLoseMessage;
         [SerializeField] private GameObject playerWinOrLoseMessageObject;
         [SerializeField] private Grid grid;
-        private Vector3 _tempTransformForSpawn = new Vector3(0, 0, 0);
-
 
         private void Start()
         {
@@ -39,12 +41,9 @@ namespace View
 
             if (DeployedBlocks <= 0)
             {
-                _isStarted = false;
-                GameObjectsMover._isStarted = false;
-                _levelNumber += 1;
+                NextLevelInitialises();
                 GameObjectsMover.GameReset(player.transform, ball);
                 LevelGenerate();
-                
             }
         }
 
@@ -57,6 +56,13 @@ namespace View
         private void WinOrLoseTextShowEnd()
         {
             playerWinOrLoseMessageObject.SetActive(false);
+        }
+
+        private void NextLevelInitialises()
+        {
+            _isStarted = false;
+            GameObjectsMover._isStarted = false;
+            _levelNumber += 1;
         }
 
         private void LevelGenerate()

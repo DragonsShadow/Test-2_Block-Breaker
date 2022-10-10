@@ -12,5 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea918c311f084a408bb07f42928c6c3f, type: 3}
   m_Name: BallModel
   m_EditorClassIdentifier: 
+  minimumHorizontalRange: -250
+  maximumHorizontalRange: 250
   ballStartLocation: {x: 0, y: -3.8, z: 0}
-  ballFirstSpeed: {x: 50, y: -300, z: 0}
+  ballFirstSpeed: {x: 0, y: -300, z: 0}
