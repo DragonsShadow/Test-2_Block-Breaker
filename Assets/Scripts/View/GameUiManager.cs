@@ -7,7 +7,7 @@ namespace View
 {
     public class GameUiManager : MonoBehaviour
     {
-        public static int deployedBlocks;
+        public static int DeployedBlocks;
         private string _levelName;
         private int _levelNumber;
         private bool _isStarted = false;
@@ -22,7 +22,7 @@ namespace View
         private void Start()
         {
             LevelGenerate();
-            GameObjectsMover.GameReset(player.transform, ball.transform);
+            GameObjectsMover.GameReset(player.transform, ball);
         }
 
         private void Update()
@@ -37,10 +37,14 @@ namespace View
                 GameObjectsMover.PlayerMovement(player);
             }
 
-            if (deployedBlocks <= 0)
+            if (DeployedBlocks <= 0)
             {
+                _isStarted = false;
+                GameObjectsMover._isStarted = false;
                 _levelNumber += 1;
+                GameObjectsMover.GameReset(player.transform, ball);
                 LevelGenerate();
+                
             }
         }
 
@@ -67,7 +71,7 @@ namespace View
                     {
                         Instantiate(LevelManager.TempCreatingBlock, _tempTransformForSpawn,
                             new Quaternion(0, 0, 0, 0));
-                        deployedBlocks++;
+                        DeployedBlocks++;
                     }
 
                     _tempTransformForSpawn += new Vector3(2, 0, 0);

@@ -1,5 +1,7 @@
+
 using Model;
 using UnityEngine;
+using Vector3 = UnityEngine.Vector3;
 
 namespace Logic
 {
@@ -7,14 +9,15 @@ namespace Logic
     {
         private static PlayerModel _playerModel;
         private static BallModel _ballModel;
-        private static bool _isStarted;
+        public static bool _isStarted;
 
-        public static void GameReset(Transform player, Transform ball)
+        public static void GameReset(Transform player, Rigidbody2D ball)
         {
             _playerModel = Resources.Load<PlayerModel>("GameConfigs/PlayerModel");
             _ballModel = Resources.Load<BallModel>("GameConfigs/BallModel");
             player.localPosition = _playerModel.playerStartLocation;
-            ball.localPosition = _ballModel.ballStartLocation;
+            ball.transform.localPosition = _ballModel.ballStartLocation;
+            ball.velocity = Vector3.zero;
         }
 
         public static bool GameStart(Rigidbody2D ball)
