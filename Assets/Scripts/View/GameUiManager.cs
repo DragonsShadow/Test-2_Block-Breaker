@@ -11,7 +11,7 @@ namespace View
 
         private string _levelName;
         private int _levelNumber;
-        private bool _isStarted;
+        public static bool _isStarted;
 
         private Vector3 _tempTransformForSpawn = new Vector3(0, 0, 0);
 
@@ -32,11 +32,6 @@ namespace View
             if (!_isStarted)
             {
                 _isStarted = LevelAndPhysicsGenerateDataManager.GameStart(ball);
-            }
-
-            if (Input.anyKey && _isStarted)
-            {
-                LevelAndPhysicsGenerateDataManager.PlayerMovement(player);
             }
 
             if (DeployedBlocks <= 0)

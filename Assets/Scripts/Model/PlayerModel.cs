@@ -7,5 +7,6 @@ namespace Model
     {
         public Vector3 playerStartLocation = new Vector3(0, 0, 0);
         public Vector3 playerSpeed = new Vector3(1, 0, 0);
+        public int playerReshootBallForce = 1;
     }
 }
