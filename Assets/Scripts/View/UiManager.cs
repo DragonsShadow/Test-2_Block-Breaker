@@ -1,8 +1,6 @@
-using Logic;
+
 using Model;
 using UnityEngine;
-using UnityEngine.Serialization;
-using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UI;
 
 namespace View
@@ -11,7 +9,7 @@ namespace View
     {
         public Text score;
         public Text star;
-        private PlayerScores _score = new PlayerScores();
+        private PlayerScores _score = ScriptableObject.CreateInstance<PlayerScores>();
         [SerializeField] private Animator animator;
         [SerializeField] private Animator colorAnimator;
 
