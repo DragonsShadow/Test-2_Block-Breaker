@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 namespace Model
@@ -23,6 +24,7 @@ namespace Model
         public void OnBeforeSerialize()
         {
             // convert Blocks to _tempBlocks
+
             _tempBlocks = new List<BlockObjectRows>();
             for (int i = 0; i < BlockRows; i++)
             {
@@ -32,11 +34,15 @@ namespace Model
                     _tempBlocks[i].Blocks.Add(Blocks[i, j]);
                 }
             }
+
+            //only premetive types gets dirty automatically
+            EditorUtility.SetDirty(this);
         }
 
         public void OnAfterDeserialize()
         {
             //convert _tempBlocks to Blocks
+
             for (int i = 0; i < BlockRows; i++)
             {
                 for (int j = 0; j < BlockColumns; j++)

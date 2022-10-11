@@ -14,13 +14,14 @@ namespace Editor
         {
             _targetScript = target as Level;
         }
+
         public override void OnInspectorGUI()
         {
             base.OnInspectorGUI();
-            
+
             Level.BlockRows = EditorGUILayout.IntField(Level.BlockRows);
             Level.BlockColumns = EditorGUILayout.IntField(Level.BlockColumns);
-            
+
             EditorGUILayout.BeginHorizontal();
             for (int y = 0; y < Level.BlockColumns; y++)
             {
@@ -29,14 +30,13 @@ namespace Editor
                 {
                     _targetScript.Blocks[x, y] =
                         (GameObject)EditorGUILayout.ObjectField(_targetScript.Blocks[x, y],
-                            typeof(GameObject), 
+                            typeof(GameObject),
                             false);
-                    
                 }
-            
+
                 EditorGUILayout.EndVertical();
             }
-            
+
             EditorGUILayout.EndHorizontal();
         }
     }
