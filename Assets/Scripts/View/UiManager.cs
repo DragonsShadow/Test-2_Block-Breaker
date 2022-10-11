@@ -13,6 +13,7 @@ namespace View
         public Text star;
         private PlayerScores _score = new PlayerScores();
         [SerializeField] private Animator animator;
+        [SerializeField] private Animator colorAnimator;
 
         private static readonly int StartBtn = Animator.StringToHash("Start");
         private static readonly int SettingBtn = Animator.StringToHash("Setting");
@@ -54,6 +55,7 @@ namespace View
         private void StartAnimationChange(Animator animator)
         {
             animator.SetBool(StartBtn, true);
+            colorAnimator.SetBool(StartBtn, true);
             animator.SetBool(SettingBtn, false);
         }
 
