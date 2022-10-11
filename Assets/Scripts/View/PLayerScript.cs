@@ -21,7 +21,7 @@ namespace View
 
         private void PlayerMovement()
         {
-            if (Input.anyKey && GameUiManager._isStarted)
+            if (Input.anyKey && GameUiManager.IsStarted)
             {
                 LevelAndPhysicsGenerateDataManager.PlayerMovement(player);
             }

@@ -9,9 +9,10 @@ namespace View
     {
         public static int DeployedBlocks;
 
-        private string _levelName;
+        public Text levelNumber;
+        
         private int _levelNumber;
-        public static bool _isStarted;
+        public static bool IsStarted;
 
         private Vector3 _tempTransformForSpawn = new Vector3(0, 0, 0);
 
@@ -29,16 +30,28 @@ namespace View
 
         private void Update()
         {
-            if (!_isStarted)
+            if (!IsStarted)
             {
-                _isStarted = LevelAndPhysicsGenerateDataManager.GameStart(ball);
+                IsStarted = LevelAndPhysicsGenerateDataManager.GameStart(ball);
             }
 
             if (DeployedBlocks <= 0)
             {
                 NextLevelInitialises();
-                LevelAndPhysicsGenerateDataManager.GameReset(player.transform, ball);
                 LevelGenerate();
+                LevelAndPhysicsGenerateDataManager.GameReset(player.transform, ball);
+            }
+        }
+
+        public void PauseGame()
+        {
+            if (Time.timeScale >= 1)
+            {
+                Time.timeScale = 0;
+            }
+            else if (Time.timeScale == 0 )
+            {
+                Time.timeScale = 1;
             }
         }
 
@@ -55,13 +68,14 @@ namespace View
 
         private void NextLevelInitialises()
         {
-            _isStarted = false;
+            IsStarted = false;
             LevelAndPhysicsGenerateDataManager._isStarted = false;
             _levelNumber += 1;
         }
 
         private void LevelGenerate()
         {
+            levelNumber.text = (_levelNumber + 1).ToString();
             _tempTransformForSpawn = grid.transform.localPosition;
             for (int i = 0; i < Level.BlockRows; i++)
             {
@@ -77,7 +91,6 @@ namespace View
 
                     _tempTransformForSpawn += new Vector3(2, 0, 0);
                 }
-
                 _tempTransformForSpawn = new Vector3(grid.transform.localPosition.x, _tempTransformForSpawn.y,
                     _tempTransformForSpawn.z);
                 _tempTransformForSpawn += new Vector3(0, -1, 0);
