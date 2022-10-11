@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerStartLocation: {x: 0, y: -4.2, z: 0}
   playerSpeed: {x: 6, y: 0, z: 0}
+  playerReshootBallForce: 10

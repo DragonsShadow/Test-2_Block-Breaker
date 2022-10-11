@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minimumHorizontalRange: -250
   maximumHorizontalRange: 250
-  ballStartLocation: {x: 0, y: -3.8, z: 0}
+  ballStartLocation: {x: 0, y: -3.7, z: 0}
   ballFirstSpeed: {x: 0, y: -300, z: 0}
