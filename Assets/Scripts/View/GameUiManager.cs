@@ -37,6 +37,7 @@ namespace View
 
             if (DeployedBlocks <= 0)
             {
+                WinOrLoseDetector.LevelWinDetect();
                 NextLevelInitialises();
                 LevelGenerate();
                 LevelAndPhysicsGenerateDataManager.GameReset(player.transform, ball);
@@ -71,6 +72,10 @@ namespace View
             IsStarted = false;
             LevelAndPhysicsGenerateDataManager._isStarted = false;
             _levelNumber += 1;
+            if (_levelNumber >= LevelManageData.LevelNumber)
+            {
+                WinOrLoseDetector.GameWinDetect();
+            }
         }
 
         private void LevelGenerate()
