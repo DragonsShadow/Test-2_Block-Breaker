@@ -44,7 +44,7 @@ namespace View
             }
         }
 
-        public void PauseGame()
+        public static void PauseGame()
         {
             if (Time.timeScale >= 1)
             {
