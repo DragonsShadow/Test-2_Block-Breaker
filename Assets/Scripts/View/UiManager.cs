@@ -1,4 +1,3 @@
-
 using Model;
 using UnityEngine;
 using UnityEngine.UI;
@@ -43,6 +42,11 @@ namespace View
             Application.Quit();
         }
 
+        public void BackButton()
+        {
+            BackFromMenusAnimationChange();
+        }
+
         private void ScoreTextSette()
         {
             _score = Resources.Load<PlayerScores>("PLayerScores/PLayerScores");
@@ -61,6 +65,13 @@ namespace View
         {
             animator.SetBool(StartBtn, false);
             animator.SetBool(SettingBtn, true);
+        }
+
+        private void BackFromMenusAnimationChange()
+        {
+            animator.SetBool(StartBtn, false);
+            colorAnimator.SetBool(StartBtn, false);
+            animator.SetBool(SettingBtn, false);
         }
     }
 }
