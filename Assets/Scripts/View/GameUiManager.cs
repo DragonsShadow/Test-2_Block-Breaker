@@ -10,7 +10,7 @@ namespace View
         public static int DeployedBlocks;
 
         public Text levelNumber;
-        
+
         private int _levelNumber;
         public static bool IsStarted;
 
@@ -18,8 +18,6 @@ namespace View
 
         [SerializeField] private Transform player;
         [SerializeField] private Rigidbody2D ball;
-        [SerializeField] private Text playerWinOrLoseMessage;
-        [SerializeField] private GameObject playerWinOrLoseMessageObject;
         [SerializeField] private Grid grid;
 
         private void Start()
@@ -50,21 +48,10 @@ namespace View
             {
                 Time.timeScale = 0;
             }
-            else if (Time.timeScale == 0 )
+            else if (Time.timeScale == 0)
             {
                 Time.timeScale = 1;
             }
-        }
-
-        private void WinOrLoseTextShow()
-        {
-            playerWinOrLoseMessageObject.SetActive(true);
-            Invoke("WinOrLoseTextShowEnd", 1f);
-        }
-
-        private void WinOrLoseTextShowEnd()
-        {
-            playerWinOrLoseMessageObject.SetActive(false);
         }
 
         private void NextLevelInitialises()
@@ -96,6 +83,7 @@ namespace View
 
                     _tempTransformForSpawn += new Vector3(2, 0, 0);
                 }
+
                 _tempTransformForSpawn = new Vector3(grid.transform.localPosition.x, _tempTransformForSpawn.y,
                     _tempTransformForSpawn.z);
                 _tempTransformForSpawn += new Vector3(0, -1, 0);
