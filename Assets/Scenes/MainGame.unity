@@ -371,9 +371,9 @@ MonoBehaviour:
   endOfGame: {fileID: 655841286}
   endOfGameObject: {fileID: 655841283}
   background: {fileID: 142352465}
-  RetryButton: {fileID: 221221720}
-  ReturnToMainMenuButton: {fileID: 222404844}
-  NextLevelButton: {fileID: 2019930176}
+  RetryButton: {fileID: 0}
+  ReturnToMainMenuButton: {fileID: 0}
+  NextLevelButton: {fileID: 0}
 --- !u!1 &142352465
 GameObject:
   m_ObjectHideFlags: 0
@@ -1762,8 +1762,6 @@ MonoBehaviour:
   levelNumber: {fileID: 1488085522}
   player: {fileID: 14620177}
   ball: {fileID: 1182622582}
-  playerWinOrLoseMessage: {fileID: 0}
-  playerWinOrLoseMessageObject: {fileID: 0}
   grid: {fileID: 821775785}
 --- !u!156049354 &821775785
 Grid:
