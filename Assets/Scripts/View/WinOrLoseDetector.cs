@@ -46,6 +46,7 @@ namespace View
                 returnToMainMenuButton.SetActive(true);
                 GameUiManager.PauseGame();
                 _isLose = false;
+                GameUiManager.IsStarted = false;
 
             }
             if (_isWinLevel)
@@ -66,6 +67,7 @@ namespace View
                 returnToMainMenuButton.SetActive(true);
                 nextLevelButton.SetActive(false);
                 GameUiManager.PauseGame();
+                _isWinLevel = false;
             }
         }
 

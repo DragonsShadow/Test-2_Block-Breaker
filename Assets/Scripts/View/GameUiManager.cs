@@ -57,7 +57,7 @@ namespace View
         private void NextLevelInitialises()
         {
             IsStarted = false;
-            _levelNumber ++;
+            _levelNumber++;
             if (_levelNumber >= LevelManageData.LevelNumber)
             {
                 WinOrLoseDetector.GameWinDetect();
