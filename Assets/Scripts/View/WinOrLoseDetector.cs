@@ -9,18 +9,18 @@ namespace View
     {
         private bool _isLose;
         private static bool _isWinLevel;
-        private static bool _isFinishedGame;
+        public static bool IsFinishedGame;
 
         public Text endOfGame;
         public GameObject endOfGameObject;
         public GameObject background;
-        public GameObject RetryButton;
-        public GameObject ReturnToMainMenuButton;
-        public GameObject NextLevelButton;
+        public GameObject retryButton;
+        public GameObject returnToMainMenuButton;
+        public GameObject nextLevelButton;
 
         public static void GameWinDetect()
         {
-            _isFinishedGame = true;
+            IsFinishedGame = true;
         }
         public static void LevelWinDetect()
         {
@@ -42,8 +42,8 @@ namespace View
                 endOfGame.text = "Freed From Mortal Ciol!";
                 endOfGameObject.SetActive(true);
                 background.SetActive(true);
-                RetryButton.SetActive(true);
-                ReturnToMainMenuButton.SetActive(true);
+                retryButton.SetActive(true);
+                returnToMainMenuButton.SetActive(true);
                 GameUiManager.PauseGame();
                 _isLose = false;
 
@@ -53,19 +53,19 @@ namespace View
                 endOfGame.text = "You May Live Longer!";
                 endOfGameObject.SetActive(true);
                 background.SetActive(true);
-                NextLevelButton.SetActive(true);
-                ReturnToMainMenuButton.SetActive(true);
+                nextLevelButton.SetActive(true);
+                returnToMainMenuButton.SetActive(true);
                 GameUiManager.PauseGame();
                 _isWinLevel = false;
             }
-            if (_isFinishedGame)
+            if (IsFinishedGame)
             {
                 endOfGame.text = "Just Goooo";
                 endOfGameObject.SetActive(true);
                 background.SetActive(true);
-                ReturnToMainMenuButton.SetActive(true);
+                returnToMainMenuButton.SetActive(true);
+                nextLevelButton.SetActive(false);
                 GameUiManager.PauseGame();
-                _isFinishedGame = false;
             }
         }
 
@@ -73,19 +73,23 @@ namespace View
         {
             GameUiManager.PauseGame();
             background.SetActive(false);
-            NextLevelButton.SetActive(false);
-            ReturnToMainMenuButton.SetActive(false);
-            RetryButton.SetActive(false);
+            nextLevelButton.SetActive(false);
+            returnToMainMenuButton.SetActive(false);
+            retryButton.SetActive(false);
             endOfGameObject.SetActive(false);
         }
 
         public void RetryAction()
         {
-            SceneManager.LoadScene("MainGame");
+            GameUiManager.PauseGame();
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            
         }
 
         public void ReturnToMainMenuAction()
         {
+            IsFinishedGame = false;
+            GameUiManager.PauseGame();
             SceneManager.LoadScene("MainMenu");
         }
     }

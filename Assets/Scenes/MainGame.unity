@@ -371,9 +371,9 @@ MonoBehaviour:
   endOfGame: {fileID: 655841286}
   endOfGameObject: {fileID: 655841283}
   background: {fileID: 142352465}
-  RetryButton: {fileID: 0}
-  ReturnToMainMenuButton: {fileID: 0}
-  NextLevelButton: {fileID: 0}
+  retryButton: {fileID: 221221720}
+  returnToMainMenuButton: {fileID: 222404844}
+  nextLevelButton: {fileID: 2019930176}
 --- !u!1 &142352465
 GameObject:
   m_ObjectHideFlags: 0

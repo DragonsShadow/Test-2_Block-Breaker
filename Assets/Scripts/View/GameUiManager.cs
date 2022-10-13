@@ -30,10 +30,10 @@ namespace View
         {
             if (!IsStarted)
             {
-                IsStarted = LevelAndPhysicsGenerateDataManager.GameStart(ball);
+                LevelAndPhysicsGenerateDataManager.GameStart(ball);
             }
 
-            if (DeployedBlocks <= 0)
+            if (DeployedBlocks <= 0 && !WinOrLoseDetector.IsFinishedGame)
             {
                 WinOrLoseDetector.LevelWinDetect();
                 NextLevelInitialises();
@@ -57,8 +57,7 @@ namespace View
         private void NextLevelInitialises()
         {
             IsStarted = false;
-            LevelAndPhysicsGenerateDataManager._isStarted = false;
-            _levelNumber += 1;
+            _levelNumber ++;
             if (_levelNumber >= LevelManageData.LevelNumber)
             {
                 WinOrLoseDetector.GameWinDetect();

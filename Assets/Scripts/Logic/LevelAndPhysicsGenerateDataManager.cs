@@ -1,6 +1,7 @@
 
 using Model;
 using UnityEngine;
+using View;
 using Vector3 = UnityEngine.Vector3;
 
 namespace Logic
@@ -9,7 +10,6 @@ namespace Logic
     {
         private static PlayerModel _playerModel;
         private static BallModel _ballModel;
-        public static bool _isStarted;
 
         public static void GameReset(Transform player, Rigidbody2D ball)
         {
@@ -20,15 +20,13 @@ namespace Logic
             ball.velocity = Vector3.zero;
         }
 
-        public static bool GameStart(Rigidbody2D ball)
+        public static void GameStart(Rigidbody2D ball)
         {
             if (Input.GetKey(KeyCode.Space))
             {
-                _isStarted = true;
+                GameUiManager.IsStarted = true;
                 BallFisrtMovement(ball);
             }
-
-            return _isStarted;
         }
 
         public static void PlayerMovement(Transform player)
