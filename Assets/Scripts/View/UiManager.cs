@@ -8,7 +8,7 @@ namespace View
     {
         public Text score;
         public Text star;
-        private PlayerScores _score = ScriptableObject.CreateInstance<PlayerScores>();
+        private PlayerScores _score;
         [SerializeField] private Animator menuObjectsanimator;
         [SerializeField] private Animator colorAnimator;
 
@@ -17,6 +17,7 @@ namespace View
 
         private void Start()
         {
+            _score = ScriptableObject.CreateInstance<PlayerScores>();
             ScoreTextSette();
         }
 
