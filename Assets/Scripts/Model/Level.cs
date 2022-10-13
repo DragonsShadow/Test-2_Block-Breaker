@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Model
 {
@@ -13,25 +14,25 @@ namespace Model
         public GameObject[,] Blocks = new GameObject[BlockRows, BlockColumns];
 
 
-        [SerializeField, HideInInspector] private List<BlockObjectRows> _tempBlocks;
+        [SerializeField, HideInInspector] private List<BlockObjectRows> tempBlocks;
 
         [Serializable]
         private class BlockObjectRows
         {
-            public List<GameObject> Blocks = new List<GameObject>();
+            [FormerlySerializedAs("Blocks")] public List<GameObject> blocks = new List<GameObject>();
         }
-
+        
         public void OnBeforeSerialize()
         {
             // convert Blocks to _tempBlocks
 
-            _tempBlocks = new List<BlockObjectRows>();
+            tempBlocks = new List<BlockObjectRows>();
             for (int i = 0; i < BlockRows; i++)
             {
-                _tempBlocks.Add(new BlockObjectRows());
+                tempBlocks.Add(new BlockObjectRows());
                 for (int j = 0; j < BlockColumns; j++)
                 {
-                    _tempBlocks[i].Blocks.Add(Blocks[i, j]);
+                    tempBlocks[i].blocks.Add(Blocks[i, j]);
                 }
             }
 
@@ -47,7 +48,7 @@ namespace Model
             {
                 for (int j = 0; j < BlockColumns; j++)
                 {
-                    Blocks[i, j] = _tempBlocks[i].Blocks[j];
+                    Blocks[i, j] = tempBlocks[i].blocks[j];
                 }
             }
         }
