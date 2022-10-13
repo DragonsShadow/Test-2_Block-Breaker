@@ -9,18 +9,11 @@ namespace View
         public Text score;
         public Text star;
         private PlayerScores _score = ScriptableObject.CreateInstance<PlayerScores>();
-        [SerializeField] private Animator animator;
+        [SerializeField] private Animator menuObjectsanimator;
         [SerializeField] private Animator colorAnimator;
 
         private static readonly int StartBtn = Animator.StringToHash("Start");
         private static readonly int SettingBtn = Animator.StringToHash("Setting");
-
-        private int _levelNumber;
-
-        public UiManager(int levelNumber)
-        {
-            _levelNumber = levelNumber;
-        }
 
         private void Start()
         {
@@ -29,12 +22,12 @@ namespace View
 
         public void GameStart()
         {
-            StartAnimationChange(animator);
+            StartAnimationChange(menuObjectsanimator, colorAnimator);
         }
 
         public void SettingIntraction()
         {
-            SettingAnimationChange(animator);
+            SettingAnimationChange(menuObjectsanimator);
         }
 
         public void GameQuit()
@@ -44,7 +37,7 @@ namespace View
 
         public void BackButton()
         {
-            BackFromMenusAnimationChange();
+            BackFromMenusAnimationChange(menuObjectsanimator, colorAnimator);
         }
 
         private void ScoreTextSette()
@@ -54,10 +47,10 @@ namespace View
             star.text = _score.Star.ToString();
         }
 
-        private void StartAnimationChange(Animator animator)
+        private void StartAnimationChange(Animator animator, Animator backgroundAnimator)
         {
             animator.SetBool(StartBtn, true);
-            colorAnimator.SetBool(StartBtn, true);
+            backgroundAnimator.SetBool(StartBtn, true);
             animator.SetBool(SettingBtn, false);
         }
 
@@ -67,10 +60,10 @@ namespace View
             animator.SetBool(SettingBtn, true);
         }
 
-        private void BackFromMenusAnimationChange()
+        private void BackFromMenusAnimationChange(Animator animator, Animator backgroundAnimator)
         {
             animator.SetBool(StartBtn, false);
-            colorAnimator.SetBool(StartBtn, false);
+            backgroundAnimator.SetBool(StartBtn, false);
             animator.SetBool(SettingBtn, false);
         }
     }

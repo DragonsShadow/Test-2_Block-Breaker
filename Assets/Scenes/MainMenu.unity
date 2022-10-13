@@ -1936,7 +1936,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   score: {fileID: 1029263635}
   star: {fileID: 901045907}
-  animator: {fileID: 1046514486}
+  menuObjectsanimator: {fileID: 1046514486}
   colorAnimator: {fileID: 211652305}
 --- !u!1 &1046514481
 GameObject:
