@@ -50,6 +50,11 @@ namespace View
             {
                 WinOrLoseManager.LevelWinDetect();
                 NextLevelInitialises();
+            }
+
+            if (WinOrLoseManager.IsContinued && _levelNumber < LevelManageData.LevelNumber)
+            {
+                WinOrLoseManager.IsContinued = false;
                 LevelGenerate();
                 LevelObjectsMover.GameResetLocation(player.transform, ball);
             }
@@ -73,29 +78,26 @@ namespace View
         private void LevelGenerate()
         {
             DeployedBlocks = 0;
-            if (_levelNumber < LevelManageData.LevelNumber)
+            levelNumber.text = (LevelNumber + 1).ToString();
+            _tempTransformForSpawn = grid.transform.localPosition;
+            for (int i = 0; i < Level.BlockRows; i++)
             {
-                levelNumber.text = (LevelNumber + 1).ToString();
-                _tempTransformForSpawn = grid.transform.localPosition;
-                for (int i = 0; i < Level.BlockRows; i++)
+                for (int j = 0; j < Level.BlockColumns; j++)
                 {
-                    for (int j = 0; j < Level.BlockColumns; j++)
+                    LevelGenerateDataSender.LevelGenerateData(LevelNumber);
+                    if (LevelGenerateDataSender.TempCreatingBlock != null)
                     {
-                        LevelGenerateDataSender.LevelGenerateData(LevelNumber);
-                        if (LevelGenerateDataSender.TempCreatingBlock != null)
-                        {
-                            Instantiate(LevelGenerateDataSender.TempCreatingBlock, _tempTransformForSpawn,
-                                new Quaternion(0, 0, 0, 0));
-                            DeployedBlocks++;
-                        }
-
-                        _tempTransformForSpawn += new Vector3(2, 0, 0);
+                        Instantiate(LevelGenerateDataSender.TempCreatingBlock, _tempTransformForSpawn,
+                            new Quaternion(0, 0, 0, 0));
+                        DeployedBlocks++;
                     }
 
-                    _tempTransformForSpawn = new Vector3(grid.transform.localPosition.x, _tempTransformForSpawn.y,
-                        _tempTransformForSpawn.z);
-                    _tempTransformForSpawn += new Vector3(0, -1, 0);
+                    _tempTransformForSpawn += new Vector3(2, 0, 0);
                 }
+
+                _tempTransformForSpawn = new Vector3(grid.transform.localPosition.x, _tempTransformForSpawn.y,
+                    _tempTransformForSpawn.z);
+                _tempTransformForSpawn += new Vector3(0, -1, 0);
             }
         }
     }

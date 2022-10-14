@@ -11,6 +11,7 @@ namespace View
         public static bool IsLose;
         public static bool IsWinLevel;
         public static bool IsFinishedGame;
+        public static bool IsContinued;
 
         private PlayerScoreChangerAndDisplayer _playerScoreChangerAndDisplayer;
 
@@ -35,15 +36,16 @@ namespace View
                 ActionWhenGameLose();
             }
 
-            if (IsWinLevel && !IsFinishedGame)
-            {
-                ActionWhenLevelWin();
-            }
-
             if (IsFinishedGame)
             {
                 ActionWhenGameWin();
             }
+            
+            if (IsWinLevel && !IsFinishedGame)
+            {
+                ActionWhenLevelWin();
+            }
+            
         }
 
         public static void GameWinDetect()
@@ -58,6 +60,7 @@ namespace View
 
         public void ContinueButtonAction()
         {
+            IsContinued = true;
             GameManager.PauseGame();
             DisableAllAfterWinOrLoseUiItems();
         }
