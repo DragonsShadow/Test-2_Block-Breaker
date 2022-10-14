@@ -52,7 +52,8 @@ namespace View
                 NextLevelInitialises();
             }
 
-            if (WinOrLoseManager.IsContinued && _levelNumber < LevelManageData.LevelNumber)
+            var isContinuedAndAllowed = WinOrLoseManager.IsContinued && _levelNumber < LevelManageData.LevelNumber;
+            if (isContinuedAndAllowed)
             {
                 WinOrLoseManager.IsContinued = false;
                 LevelGenerate();
