@@ -23,7 +23,7 @@ namespace View
         {
             if (Input.anyKey && GameUiManager.IsStarted)
             {
-                LevelAndPhysicsGenerateDataManager.PlayerMovement(player);
+                LevelObjectsMover.PlayerMovement(player);
             }
         }
 

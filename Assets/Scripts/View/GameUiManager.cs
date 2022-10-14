@@ -31,15 +31,15 @@ namespace View
         private void Start()
         {
             LevelGenerate();
-            LevelAndPhysicsGenerateDataManager.GameReset(player.transform, ball);
+            LevelObjectsMover.GameResetLocation(player.transform, ball);
         }
 
         private void Update()
         {
             if (!IsStarted && !WinOrLoseDetector.IsFinishedGame && !_isPaused && !WinOrLoseDetector.IsLose && !WinOrLoseDetector.IsWinLevel)
             {
-                LevelAndPhysicsGenerateDataManager.GameReset(player.transform, ball);
-                LevelAndPhysicsGenerateDataManager.GameStart(ball);
+                LevelObjectsMover.GameResetLocation(player.transform, ball);
+                LevelObjectsMover.GameStartMove(ball);
             }
 
             if (DeployedBlocks <= 0 && !WinOrLoseDetector.IsFinishedGame && IsStarted)
@@ -47,7 +47,7 @@ namespace View
                 WinOrLoseDetector.LevelWinDetect();
                 NextLevelInitialises();
                 LevelGenerate();
-                LevelAndPhysicsGenerateDataManager.GameReset(player.transform, ball);
+                LevelObjectsMover.GameResetLocation(player.transform, ball);
             }
         }
 
@@ -85,10 +85,10 @@ namespace View
                 {
                     for (int j = 0; j < Level.BlockColumns; j++)
                     {
-                        LevelManager.LevelAssembleDataSend(LevelNumber);
-                        if (LevelManager.TempCreatingBlock != null)
+                        LevelGenerateDataSender.LevelGenerateData(LevelNumber);
+                        if (LevelGenerateDataSender.TempCreatingBlock != null)
                         {
-                            Instantiate(LevelManager.TempCreatingBlock, _tempTransformForSpawn,
+                            Instantiate(LevelGenerateDataSender.TempCreatingBlock, _tempTransformForSpawn,
                                 new Quaternion(0, 0, 0, 0));
                             DeployedBlocks++;
                         }

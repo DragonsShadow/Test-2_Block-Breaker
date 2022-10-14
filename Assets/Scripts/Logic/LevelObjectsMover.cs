@@ -1,4 +1,3 @@
-
 using Model;
 using UnityEngine;
 using View;
@@ -6,12 +5,12 @@ using Vector3 = UnityEngine.Vector3;
 
 namespace Logic
 {
-    public class LevelAndPhysicsGenerateDataManager
+    public class LevelObjectsMover
     {
         private static PlayerModel _playerModel;
         private static BallModel _ballModel;
 
-        public static void GameReset(Transform player, Rigidbody2D ball)
+        public static void GameResetLocation(Transform player, Rigidbody2D ball)
         {
             _playerModel = Resources.Load<PlayerModel>("GameConfigs/PlayerModel");
             _ballModel = Resources.Load<BallModel>("GameConfigs/BallModel");
@@ -20,7 +19,7 @@ namespace Logic
             ball.velocity = Vector3.zero;
         }
 
-        public static void GameStart(Rigidbody2D ball)
+        public static void GameStartMove(Rigidbody2D ball)
         {
             if (Input.GetKey(KeyCode.Space))
             {
