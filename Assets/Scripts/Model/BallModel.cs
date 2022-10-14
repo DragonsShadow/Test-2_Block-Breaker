@@ -8,6 +8,6 @@ namespace Model
         public int minimumHorizontalRange = -250;
         public int maximumHorizontalRange = 250;
         public Vector3 ballStartLocation = new Vector3(0, -3.8f, 0);
-        public Vector3 ballFirstSpeed = new Vector3(0, -250f, 0);
+        public Vector3 ballFirstSpeed = new Vector3(0, 300f, 0);
     }
 }
