@@ -11,7 +11,7 @@ namespace View
 
         public Text levelNumber;
 
-        private int _levelNumber;
+        private static int _levelNumber;
         public static bool IsStarted;
 
         private Vector3 _tempTransformForSpawn = new Vector3(0, 0, 0);
@@ -19,6 +19,13 @@ namespace View
         [SerializeField] private Transform player;
         [SerializeField] private Rigidbody2D ball;
         [SerializeField] private Grid grid;
+
+        public static int LevelNumber
+        {
+            get => _levelNumber;
+            set => _levelNumber = value;
+        }
+
 
         private void Start()
         {
@@ -57,8 +64,8 @@ namespace View
         private void NextLevelInitialises()
         {
             IsStarted = false;
-            _levelNumber++;
-            if (_levelNumber >= LevelManageData.LevelNumber)
+            LevelNumber++;
+            if (LevelNumber >= LevelManageData.LevelNumber)
             {
                 WinOrLoseDetector.GameWinDetect();
             }
@@ -66,27 +73,30 @@ namespace View
 
         private void LevelGenerate()
         {
-            levelNumber.text = (_levelNumber + 1).ToString();
             DeployedBlocks = 0;
-            _tempTransformForSpawn = grid.transform.localPosition;
-            for (int i = 0; i < Level.BlockRows; i++)
+            if (_levelNumber < LevelManageData.LevelNumber)
             {
-                for (int j = 0; j < Level.BlockColumns; j++)
+                levelNumber.text = (LevelNumber + 1).ToString();
+                _tempTransformForSpawn = grid.transform.localPosition;
+                for (int i = 0; i < Level.BlockRows; i++)
                 {
-                    LevelManager.LevelAssembleDataSend(_levelNumber);
-                    if (LevelManager.TempCreatingBlock != null)
+                    for (int j = 0; j < Level.BlockColumns; j++)
                     {
-                        Instantiate(LevelManager.TempCreatingBlock, _tempTransformForSpawn,
-                            new Quaternion(0, 0, 0, 0));
-                        DeployedBlocks++;
+                        LevelManager.LevelAssembleDataSend(LevelNumber);
+                        if (LevelManager.TempCreatingBlock != null)
+                        {
+                            Instantiate(LevelManager.TempCreatingBlock, _tempTransformForSpawn,
+                                new Quaternion(0, 0, 0, 0));
+                            DeployedBlocks++;
+                        }
+
+                        _tempTransformForSpawn += new Vector3(2, 0, 0);
                     }
 
-                    _tempTransformForSpawn += new Vector3(2, 0, 0);
+                    _tempTransformForSpawn = new Vector3(grid.transform.localPosition.x, _tempTransformForSpawn.y,
+                        _tempTransformForSpawn.z);
+                    _tempTransformForSpawn += new Vector3(0, -1, 0);
                 }
-
-                _tempTransformForSpawn = new Vector3(grid.transform.localPosition.x, _tempTransformForSpawn.y,
-                    _tempTransformForSpawn.z);
-                _tempTransformForSpawn += new Vector3(0, -1, 0);
             }
         }
     }

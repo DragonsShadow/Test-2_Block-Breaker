@@ -110,6 +110,7 @@ namespace View
         public void FinishGameAction()
         {
             IsFinishedGame = false;
+            GameUiManager.PauseGame();
             _playerScoreChangerAndDisplayer.PlayerStarAdd();
             SceneManager.LoadScene("MainMenu");
         }
