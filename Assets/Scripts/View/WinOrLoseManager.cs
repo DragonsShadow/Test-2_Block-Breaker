@@ -5,8 +5,9 @@ using UnityEngine.UI;
 
 namespace View
 {
-    public class WinOrLoseDetector : MonoBehaviour
+    public class WinOrLoseManager : MonoBehaviour
     {
+        public static bool IsStarted;
         public static bool IsLose;
         public static bool IsWinLevel;
         public static bool IsFinishedGame;
@@ -26,37 +27,19 @@ namespace View
             _playerScoreChangerAndDisplayer = new PlayerScoreChangerAndDisplayer();
             _playerScoreChangerAndDisplayer.PlyerScoreLoadData();
         }
-
-        public static void GameWinDetect()
-        {
-            IsFinishedGame = true;
-        }
-
-        public static void LevelWinDetect()
-        {
-            IsWinLevel = true;
-        }
-
-        private void OnTriggerEnter2D(Collider2D col)
-        {
-            if (col.tag.Equals("Ground"))
-            {
-                IsLose = true;
-            }
-        }
-
+        
         private void Update()
         {
             if (IsLose)
             {
                 endOfGame.text = "Freed From Mortal Ciol!";
+                IsLose = false;
                 endOfGameObject.SetActive(true);
                 background.SetActive(true);
                 retryButton.SetActive(true);
                 returnToMainMenuButton.SetActive(true);
                 GameUiManager.PauseGame();
-                IsLose = false;
-                GameUiManager.IsStarted = false;
+                IsStarted = false;
                 
             }
 
@@ -70,7 +53,7 @@ namespace View
                 GameUiManager.PauseGame();
                 IsWinLevel = false;
                 _playerScoreChangerAndDisplayer.PlayerStarAdd();
-                GameUiManager.IsStarted = false;
+                IsStarted = false;
             }
 
             if (IsFinishedGame)
@@ -83,10 +66,28 @@ namespace View
                 nextLevelButton.SetActive(false);
                 GameUiManager.PauseGame();
                 IsWinLevel = false;
-                GameUiManager.IsStarted = false;
-                GameUiManager.IsStarted = false;
+                IsStarted = false;
+                IsStarted = false;
                 IsFinishedGame = false;
             }
+        }
+        
+        private void OnTriggerEnter2D(Collider2D col)
+        {
+            if (col.tag.Equals("Ground"))
+            {
+                IsLose = true;
+            }
+        }
+        
+        public static void GameWinDetect()
+        {
+            IsFinishedGame = true;
+        }
+
+        public static void LevelWinDetect()
+        {
+            IsWinLevel = true;
         }
 
         public void NextLevelAction()

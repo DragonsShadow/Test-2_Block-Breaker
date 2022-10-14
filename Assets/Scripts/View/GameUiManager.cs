@@ -12,7 +12,7 @@ namespace View
         public Text levelNumber;
 
         private static int _levelNumber;
-        public static bool IsStarted;
+
         private static bool _isPaused;
 
         private Vector3 _tempTransformForSpawn = new Vector3(0, 0, 0);
@@ -36,44 +36,37 @@ namespace View
 
         private void Update()
         {
-            if (!IsStarted && !WinOrLoseDetector.IsFinishedGame && !_isPaused && !WinOrLoseDetector.IsLose && !WinOrLoseDetector.IsWinLevel)
+            if (!WinOrLoseManager.IsStarted && !WinOrLoseManager.IsFinishedGame && !_isPaused &&
+                !WinOrLoseManager.IsLose && !WinOrLoseManager.IsWinLevel)
             {
                 LevelObjectsMover.GameResetLocation(player.transform, ball);
                 LevelObjectsMover.GameStartMove(ball);
             }
 
-            if (DeployedBlocks <= 0 && !WinOrLoseDetector.IsFinishedGame && IsStarted)
+            if (DeployedBlocks <= 0 && !WinOrLoseManager.IsFinishedGame && WinOrLoseManager.IsStarted)
             {
-                WinOrLoseDetector.LevelWinDetect();
+                WinOrLoseManager.LevelWinDetect();
                 NextLevelInitialises();
                 LevelGenerate();
                 LevelObjectsMover.GameResetLocation(player.transform, ball);
             }
         }
 
-        public static void PauseGame()
-        {
-            _isPaused = !_isPaused;
-            if (Time.timeScale >= 1)
-            {
-                Time.timeScale = 0;
-            }
-            else if (Time.timeScale == 0)
-            {
-                Time.timeScale = 1;
-            }
-        }
-
         private void NextLevelInitialises()
         {
-            IsStarted = false;
+            WinOrLoseManager.IsStarted = false;
             LevelNumber++;
             if (LevelNumber >= LevelManageData.LevelNumber)
             {
-                WinOrLoseDetector.GameWinDetect();
+                WinOrLoseManager.GameWinDetect();
             }
         }
 
+        public static void PauseGame()
+        {
+            _isPaused = GameBaseActioner.GamePause(_isPaused);
+        }
+        
         private void LevelGenerate()
         {
             DeployedBlocks = 0;

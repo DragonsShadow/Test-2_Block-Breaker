@@ -22,7 +22,7 @@ namespace View
 
         private void PlayerMovement()
         {
-            if (Input.anyKey && GameUiManager.IsStarted)
+            if (Input.anyKey && WinOrLoseManager.IsStarted)
             {
                 LevelObjectsMover.PlayerMovement(player);
             }

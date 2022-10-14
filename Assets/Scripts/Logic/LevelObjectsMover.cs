@@ -22,7 +22,7 @@ namespace Logic
         {
             if (Input.GetKey(KeyCode.Space))
             {
-                GameUiManager.IsStarted = true;
+                WinOrLoseManager.IsStarted = true;
                 BallFisrtMovement(ball);
             }
         }
