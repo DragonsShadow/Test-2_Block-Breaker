@@ -83,7 +83,7 @@ namespace View
 
         private void OnTriggerEnter2D(Collider2D col)
         {
-            if (col.tag.Equals("Ground") && !IsWinLevel && IsFinishedGame)
+            if (col.tag.Equals("Ground") && !IsWinLevel && !IsFinishedGame)
             {
                 IsLose = true;
             }
