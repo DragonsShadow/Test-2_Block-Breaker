@@ -11,12 +11,11 @@ namespace Model
         private static int _star;
         //score based on past levels
 
-        
+
         public int Score
         {
             get => _score;
             set => _score = value;
-            
         }
 
         public int Star

@@ -21,7 +21,7 @@ namespace Model
         {
             [FormerlySerializedAs("Blocks")] public List<GameObject> blocks = new List<GameObject>();
         }
-        
+
         public void OnBeforeSerialize()
         {
             // convert Blocks to _tempBlocks
