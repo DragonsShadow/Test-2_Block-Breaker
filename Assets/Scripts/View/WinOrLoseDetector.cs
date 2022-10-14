@@ -1,4 +1,4 @@
-
+using Logic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -11,17 +11,27 @@ namespace View
         private static bool _isWinLevel;
         public static bool IsFinishedGame;
 
+        private PlayerScoreChangerAndDisplayer _playerScoreChangerAndDisplayer;
+
         public Text endOfGame;
         public GameObject endOfGameObject;
         public GameObject background;
         public GameObject retryButton;
         public GameObject returnToMainMenuButton;
         public GameObject nextLevelButton;
+        public GameObject finishGameButton;
+
+        private void Start()
+        {
+            _playerScoreChangerAndDisplayer = new PlayerScoreChangerAndDisplayer();
+            _playerScoreChangerAndDisplayer.PlyerScoreDetect();
+        }
 
         public static void GameWinDetect()
         {
             IsFinishedGame = true;
         }
+
         public static void LevelWinDetect()
         {
             _isWinLevel = true;
@@ -47,8 +57,8 @@ namespace View
                 GameUiManager.PauseGame();
                 _isLose = false;
                 GameUiManager.IsStarted = false;
-
             }
+
             if (_isWinLevel && !IsFinishedGame)
             {
                 endOfGame.text = "You May Live Longer!";
@@ -58,13 +68,16 @@ namespace View
                 returnToMainMenuButton.SetActive(true);
                 GameUiManager.PauseGame();
                 _isWinLevel = false;
+                _playerScoreChangerAndDisplayer.PlayerStarAdd();
             }
+
             if (IsFinishedGame)
             {
                 endOfGame.text = "Just Goooo";
                 endOfGameObject.SetActive(true);
                 background.SetActive(true);
-                returnToMainMenuButton.SetActive(true);
+                returnToMainMenuButton.SetActive(false);
+                finishGameButton.SetActive(true);
                 nextLevelButton.SetActive(false);
                 GameUiManager.PauseGame();
                 _isWinLevel = false;
@@ -85,13 +98,19 @@ namespace View
         {
             GameUiManager.PauseGame();
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-            
         }
 
         public void ReturnToMainMenuAction()
         {
-            IsFinishedGame = false;
+            
             GameUiManager.PauseGame();
+            SceneManager.LoadScene("MainMenu");
+        }
+
+        public void FinishGameAction()
+        {
+            IsFinishedGame = false;
+            _playerScoreChangerAndDisplayer.PlayerStarAdd();
             SceneManager.LoadScene("MainMenu");
         }
     }

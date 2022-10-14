@@ -1,4 +1,4 @@
-using Model;
+using Logic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,7 +8,9 @@ namespace View
     {
         public Text score;
         public Text star;
-        private PlayerScores _score;
+
+        private PlayerScoreChangerAndDisplayer _playerScoreChangerAndDisplayer;
+
         [SerializeField] private Animator menuObjectsanimator;
         [SerializeField] private Animator colorAnimator;
 
@@ -17,8 +19,9 @@ namespace View
 
         private void Start()
         {
-            _score = ScriptableObject.CreateInstance<PlayerScores>();
-            ScoreTextSette();
+            _playerScoreChangerAndDisplayer = new PlayerScoreChangerAndDisplayer();
+            _playerScoreChangerAndDisplayer.PlyerScoreDetect();
+            _playerScoreChangerAndDisplayer.PlayerScoresShow(score, star);
         }
 
         public void GameStart()
@@ -39,13 +42,6 @@ namespace View
         public void BackButton()
         {
             BackFromMenusAnimationChange(menuObjectsanimator, colorAnimator);
-        }
-
-        private void ScoreTextSette()
-        {
-            _score = Resources.Load<PlayerScores>("PLayerScores/PLayerScores");
-            score.text = _score.Score.ToString();
-            star.text = _score.Star.ToString();
         }
 
         private void StartAnimationChange(Animator animator, Animator backgroundAnimator)
