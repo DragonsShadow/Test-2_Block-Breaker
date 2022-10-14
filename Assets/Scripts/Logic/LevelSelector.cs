@@ -8,7 +8,7 @@ namespace Logic
     {
         public static void Levechange(Text level)
         {
-            GameUiManager.LevelNumber = int.Parse(level.text) - 1;
+            GameManager.LevelNumber = int.Parse(level.text) - 1;
             SceneManager.LoadScene("Scenes/MainGame");
         }
     }

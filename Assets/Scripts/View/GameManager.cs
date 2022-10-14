@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 namespace View
 {
-    public class GameUiManager : MonoBehaviour
+    public class GameManager : MonoBehaviour
     {
         public static int DeployedBlocks;
 

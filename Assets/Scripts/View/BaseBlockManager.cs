@@ -13,7 +13,7 @@ namespace View
             if (block.collider.tag.Equals("Ball"))
             {
                 _blockHealth -= 1;
-                GameUiManager.DeployedBlocks -= 1;
+                GameManager.DeployedBlocks -= 1;
                 DestroyCheck();
             }
         }

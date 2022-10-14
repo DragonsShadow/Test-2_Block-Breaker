@@ -38,7 +38,7 @@ namespace View
                 background.SetActive(true);
                 retryButton.SetActive(true);
                 returnToMainMenuButton.SetActive(true);
-                GameUiManager.PauseGame();
+                GameManager.PauseGame();
                 IsStarted = false;
                 
             }
@@ -50,7 +50,7 @@ namespace View
                 background.SetActive(true);
                 nextLevelButton.SetActive(true);
                 returnToMainMenuButton.SetActive(true);
-                GameUiManager.PauseGame();
+                GameManager.PauseGame();
                 IsWinLevel = false;
                 _playerScoreChangerAndDisplayer.PlayerStarAdd();
                 IsStarted = false;
@@ -63,23 +63,14 @@ namespace View
                 background.SetActive(true);
                 returnToMainMenuButton.SetActive(false);
                 finishGameButton.SetActive(true);
-                nextLevelButton.SetActive(false);
-                GameUiManager.PauseGame();
+                GameManager.PauseGame();
                 IsWinLevel = false;
                 IsStarted = false;
                 IsStarted = false;
                 IsFinishedGame = false;
             }
         }
-        
-        private void OnTriggerEnter2D(Collider2D col)
-        {
-            if (col.tag.Equals("Ground"))
-            {
-                IsLose = true;
-            }
-        }
-        
+
         public static void GameWinDetect()
         {
             IsFinishedGame = true;
@@ -92,33 +83,45 @@ namespace View
 
         public void NextLevelAction()
         {
-            GameUiManager.PauseGame();
-            background.SetActive(false);
-            nextLevelButton.SetActive(false);
-            returnToMainMenuButton.SetActive(false);
-            retryButton.SetActive(false);
-            endOfGameObject.SetActive(false);
+            GameManager.PauseGame();
+            DisableAllAfterWinOrLoseUiItems();
         }
 
         public void RetryAction()
         {
-            GameUiManager.PauseGame();
-            GameUiManager.LevelNumber = 0;
+            GameManager.PauseGame();
+            GameManager.LevelNumber = 0;
             SceneManager.LoadScene("MainGame");
         }
 
         public void ReturnToMainMenuAction()
         {
             
-            GameUiManager.PauseGame();
+            GameManager.PauseGame();
             SceneManager.LoadScene("MainMenu");
         }
 
         public void FinishGameAction()
         {
-            GameUiManager.PauseGame();
             _playerScoreChangerAndDisplayer.PlayerStarAdd();
-            SceneManager.LoadScene("MainMenu");
+            ReturnToMainMenuAction();
+        }
+        
+        private void OnTriggerEnter2D(Collider2D col)
+        {
+            if (col.tag.Equals("Ground"))
+            {
+                IsLose = true;
+            }
+        }
+
+        private void DisableAllAfterWinOrLoseUiItems()
+        {
+            background.SetActive(false);
+            nextLevelButton.SetActive(false);
+            returnToMainMenuButton.SetActive(false);
+            retryButton.SetActive(false);
+            endOfGameObject.SetActive(false);
         }
     }
 }
