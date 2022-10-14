@@ -40,12 +40,11 @@ namespace View
             {
                 ActionWhenGameWin();
             }
-            
+
             if (IsWinLevel && !IsFinishedGame)
             {
                 ActionWhenLevelWin();
             }
-            
         }
 
         public static void GameWinDetect()
