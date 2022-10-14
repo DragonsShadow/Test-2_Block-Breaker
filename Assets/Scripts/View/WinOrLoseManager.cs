@@ -56,34 +56,34 @@ namespace View
             IsWinLevel = true;
         }
 
-        public void NextLevelAction()
+        public void NextLevelButtonAction()
         {
             GameManager.PauseGame();
             DisableAllAfterWinOrLoseUiItems();
         }
 
-        public void RetryAction()
+        public void RetryButtonAction()
         {
             GameManager.PauseGame();
             GameManager.LevelNumber = 0;
             SceneManager.LoadScene("MainGame");
         }
 
-        public void ReturnToMainMenuAction()
+        public void ReturnToMainMenuButtonAction()
         {
             GameManager.PauseGame();
             SceneManager.LoadScene("MainMenu");
         }
 
-        public void FinishGameAction()
+        public void FinishGameButtonAction()
         {
             _playerScoreChangerAndDisplayer.PlayerStarAdd();
-            ReturnToMainMenuAction();
+            ReturnToMainMenuButtonAction();
         }
 
         private void OnTriggerEnter2D(Collider2D col)
         {
-            if (col.tag.Equals("Ground"))
+            if (col.tag.Equals("Ground") && !IsWinLevel && IsFinishedGame)
             {
                 IsLose = true;
             }
@@ -91,7 +91,7 @@ namespace View
 
         private void ActionWhenGameLose()
         {
-            endOfGame.text = "Freed From Mortal Ciol!";
+            endOfGame.text = "Freed From Mortal Coil!";
             IsLose = false;
             endOfGameObject.SetActive(true);
             background.SetActive(true);

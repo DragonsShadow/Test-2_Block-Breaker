@@ -535,7 +535,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 127115058}
         m_TargetAssemblyTypeName: View.WinOrLoseDetector, Assembly-CSharp
-        m_MethodName: RetryAction
+        m_MethodName: RetryButtonAction
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -668,7 +668,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 127115058}
         m_TargetAssemblyTypeName: View.WinOrLoseDetector, Assembly-CSharp
-        m_MethodName: ReturnToMainMenuAction
+        m_MethodName: ReturnToMainMenuButtonAction
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1841,7 +1841,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 127115058}
         m_TargetAssemblyTypeName: View.WinOrLoseDetector, Assembly-CSharp
-        m_MethodName: FinishGameAction
+        m_MethodName: FinishGameButtonAction
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4241,7 +4241,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 127115058}
         m_TargetAssemblyTypeName: View.WinOrLoseDetector, Assembly-CSharp
-        m_MethodName: NextLevelAction
+        m_MethodName: NextLevelButtonAction
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
