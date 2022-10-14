@@ -206,9 +206,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1037488696}
-        m_TargetAssemblyTypeName: View.LevelSelector, Assembly-CSharp
-        m_MethodName: Levechange
+      - m_Target: {fileID: 1037488695}
+        m_TargetAssemblyTypeName: View.UiManager, Assembly-CSharp
+        m_MethodName: LevelSelect
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 315130311}
@@ -1140,9 +1140,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1037488696}
-        m_TargetAssemblyTypeName: View.LevelSelector, Assembly-CSharp
-        m_MethodName: Levechange
+      - m_Target: {fileID: 1037488695}
+        m_TargetAssemblyTypeName: View.UiManager, Assembly-CSharp
+        m_MethodName: LevelSelect
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 2016239213}
@@ -1565,9 +1565,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1037488696}
-        m_TargetAssemblyTypeName: View.LevelSelector, Assembly-CSharp
-        m_MethodName: Levechange
+      - m_Target: {fileID: 1037488695}
+        m_TargetAssemblyTypeName: View.UiManager, Assembly-CSharp
+        m_MethodName: LevelSelect
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 268774624}
@@ -1937,7 +1937,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1037488694}
   - component: {fileID: 1037488695}
-  - component: {fileID: 1037488696}
   m_Layer: 0
   m_Name: MenuManager
   m_TagString: Untagged
@@ -1975,18 +1974,6 @@ MonoBehaviour:
   star: {fileID: 901045907}
   menuObjectsanimator: {fileID: 1046514486}
   colorAnimator: {fileID: 211652305}
---- !u!114 &1037488696
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1037488693}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c5c7b8440f8c48438d6b924bb8eaacf8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1046514481
 GameObject:
   m_ObjectHideFlags: 0
@@ -2479,9 +2466,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1037488696}
-        m_TargetAssemblyTypeName: View.LevelSelector, Assembly-CSharp
-        m_MethodName: Levechange
+      - m_Target: {fileID: 1037488695}
+        m_TargetAssemblyTypeName: View.UiManager, Assembly-CSharp
+        m_MethodName: LevelSelect
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 598678133}
@@ -2875,9 +2862,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1037488696}
-        m_TargetAssemblyTypeName: View.LevelSelector, Assembly-CSharp
-        m_MethodName: Levechange
+      - m_Target: {fileID: 1037488695}
+        m_TargetAssemblyTypeName: View.UiManager, Assembly-CSharp
+        m_MethodName: LevelSelect
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 847662595}

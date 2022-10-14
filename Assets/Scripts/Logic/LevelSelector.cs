@@ -1,12 +1,12 @@
-using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using View;
 
-namespace View
+namespace Logic
 {
-    public class LevelSelector : MonoBehaviour
+    public class LevelSelector 
     {
-        public void Levechange(Text level)
+        public static void Levechange(Text level)
         {
             GameUiManager.LevelNumber = int.Parse(level.text) - 1;
             SceneManager.LoadScene("Scenes/MainGame");

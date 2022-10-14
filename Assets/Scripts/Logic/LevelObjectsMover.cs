@@ -1,7 +1,6 @@
 using Model;
 using UnityEngine;
 using View;
-using Vector3 = UnityEngine.Vector3;
 
 namespace Logic
 {
@@ -38,6 +37,19 @@ namespace Logic
             if (Input.GetKey("a"))
             {
                 player.localPosition -= _playerModel.playerSpeed * Time.deltaTime;
+            }
+        }
+
+        public static void BallMovementEnhance(Transform player, Collision2D ball)
+        {
+            if (player.localPosition.x > ball.transform.localPosition.x)
+            {
+                ball.rigidbody.AddForce(new Vector3(-_playerModel.playerReshootBallForce, 0, 0));
+            }
+
+            if (player.localPosition.x < ball.transform.localPosition.x)
+            {
+                ball.rigidbody.AddForce(new Vector3(_playerModel.playerReshootBallForce, 0, 0));
             }
         }
 

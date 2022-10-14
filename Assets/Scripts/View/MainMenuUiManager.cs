@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 namespace View
 {
-    public class UiManager : MonoBehaviour
+    public class MainMenuUiManager : MonoBehaviour
     {
         public Text score;
         public Text star;
@@ -20,13 +20,18 @@ namespace View
         private void Start()
         {
             _playerScoreChangerAndDisplayer = new PlayerScoreChangerAndDisplayer();
-            _playerScoreChangerAndDisplayer.PlyerScoreDetect();
+            _playerScoreChangerAndDisplayer.PlyerScoreLoadData();
             _playerScoreChangerAndDisplayer.PlayerScoresShow(score, star);
         }
 
         public void GameStart()
         {
             StartAnimationChange(menuObjectsanimator, colorAnimator);
+        }
+
+        public void LevelSelect(Text levelNumber)
+        {
+            LevelSelector.Levechange(levelNumber);
         }
 
         public void SettingIntraction()

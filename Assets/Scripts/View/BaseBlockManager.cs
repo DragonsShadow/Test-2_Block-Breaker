@@ -3,16 +3,16 @@ using UnityEngine;
 
 namespace View
 {
-    public class BaseBlockScript : MonoBehaviour
+    public class BaseBlockManager : MonoBehaviour
     {
-        private int _health = 1;
+        private int _blockHealth = 1;
         private PlayerScoreChangerAndDisplayer _playerScoreChangerAndDisplayer;
 
-        private void OnCollisionEnter2D(Collision2D col)
+        private void OnCollisionEnter2D(Collision2D block)
         {
-            if (col.collider.tag.Equals("Ball"))
+            if (block.collider.tag.Equals("Ball"))
             {
-                _health -= 1;
+                _blockHealth -= 1;
                 GameUiManager.DeployedBlocks -= 1;
                 DestroyCheck();
             }
@@ -20,7 +20,7 @@ namespace View
 
         void DestroyCheck()
         {
-            if (_health <= 0)
+            if (_blockHealth <= 0)
             {
                 AddToScore();
                 Destroy(gameObject);
@@ -30,7 +30,7 @@ namespace View
         void AddToScore()
         {
             _playerScoreChangerAndDisplayer = new PlayerScoreChangerAndDisplayer();
-            _playerScoreChangerAndDisplayer.PlyerScoreDetect();
+            _playerScoreChangerAndDisplayer.PlyerScoreLoadData();
             _playerScoreChangerAndDisplayer.PlayerScoreAdd();
         }
     }

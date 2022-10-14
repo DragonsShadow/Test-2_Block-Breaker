@@ -8,7 +8,7 @@ namespace Logic
     {
         private static PlayerScores _playerScores = ScriptableObject.CreateInstance<PlayerScores>();
 
-        public void PlyerScoreDetect()
+        public void PlyerScoreLoadData()
         {
             _playerScores = Resources.Load<PlayerScores>("PlayerScores/PlayerScores");
         }

@@ -24,7 +24,7 @@ namespace View
         private void Start()
         {
             _playerScoreChangerAndDisplayer = new PlayerScoreChangerAndDisplayer();
-            _playerScoreChangerAndDisplayer.PlyerScoreDetect();
+            _playerScoreChangerAndDisplayer.PlyerScoreLoadData();
         }
 
         public static void GameWinDetect()
