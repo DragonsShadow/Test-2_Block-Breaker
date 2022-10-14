@@ -13,6 +13,7 @@ namespace View
 
         private static int _levelNumber;
         public static bool IsStarted;
+        private static bool _isPaused;
 
         private Vector3 _tempTransformForSpawn = new Vector3(0, 0, 0);
 
@@ -35,12 +36,13 @@ namespace View
 
         private void Update()
         {
-            if (!IsStarted)
+            if (!IsStarted && !WinOrLoseDetector.IsFinishedGame && !_isPaused && !WinOrLoseDetector._isLose && !WinOrLoseDetector._isWinLevel)
             {
+                LevelAndPhysicsGenerateDataManager.GameReset(player.transform, ball);
                 LevelAndPhysicsGenerateDataManager.GameStart(ball);
             }
 
-            if (DeployedBlocks <= 0 && !WinOrLoseDetector.IsFinishedGame)
+            if (DeployedBlocks <= 0 && !WinOrLoseDetector.IsFinishedGame && IsStarted)
             {
                 WinOrLoseDetector.LevelWinDetect();
                 NextLevelInitialises();
@@ -51,6 +53,7 @@ namespace View
 
         public static void PauseGame()
         {
+            _isPaused = !_isPaused;
             if (Time.timeScale >= 1)
             {
                 Time.timeScale = 0;

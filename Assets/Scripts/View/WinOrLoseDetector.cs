@@ -7,8 +7,8 @@ namespace View
 {
     public class WinOrLoseDetector : MonoBehaviour
     {
-        private bool _isLose;
-        private static bool _isWinLevel;
+        public static bool _isLose;
+        public static bool _isWinLevel;
         public static bool IsFinishedGame;
 
         private PlayerScoreChangerAndDisplayer _playerScoreChangerAndDisplayer;
@@ -57,6 +57,7 @@ namespace View
                 GameUiManager.PauseGame();
                 _isLose = false;
                 GameUiManager.IsStarted = false;
+                
             }
 
             if (_isWinLevel && !IsFinishedGame)
@@ -69,6 +70,7 @@ namespace View
                 GameUiManager.PauseGame();
                 _isWinLevel = false;
                 _playerScoreChangerAndDisplayer.PlayerStarAdd();
+                GameUiManager.IsStarted = false;
             }
 
             if (IsFinishedGame)
@@ -81,6 +83,9 @@ namespace View
                 nextLevelButton.SetActive(false);
                 GameUiManager.PauseGame();
                 _isWinLevel = false;
+                GameUiManager.IsStarted = false;
+                GameUiManager.IsStarted = false;
+                IsFinishedGame = false;
             }
         }
 
@@ -97,6 +102,7 @@ namespace View
         public void RetryAction()
         {
             GameUiManager.PauseGame();
+            GameUiManager.LevelNumber = 0;
             SceneManager.LoadScene("MainGame");
         }
 
@@ -109,7 +115,6 @@ namespace View
 
         public void FinishGameAction()
         {
-            IsFinishedGame = false;
             GameUiManager.PauseGame();
             _playerScoreChangerAndDisplayer.PlayerStarAdd();
             SceneManager.LoadScene("MainMenu");
