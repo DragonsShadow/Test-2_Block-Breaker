@@ -97,7 +97,7 @@ namespace View
         public void RetryAction()
         {
             GameUiManager.PauseGame();
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            SceneManager.LoadScene("MainGame");
         }
 
         public void ReturnToMainMenuAction()

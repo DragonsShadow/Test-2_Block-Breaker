@@ -67,6 +67,7 @@ namespace View
         private void LevelGenerate()
         {
             levelNumber.text = (_levelNumber + 1).ToString();
+            DeployedBlocks = 0;
             _tempTransformForSpawn = grid.transform.localPosition;
             for (int i = 0; i < Level.BlockRows; i++)
             {
