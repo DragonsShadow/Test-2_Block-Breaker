@@ -49,7 +49,7 @@ namespace View
                 GameUiManager.IsStarted = false;
 
             }
-            if (_isWinLevel)
+            if (_isWinLevel && !IsFinishedGame)
             {
                 endOfGame.text = "You May Live Longer!";
                 endOfGameObject.SetActive(true);
