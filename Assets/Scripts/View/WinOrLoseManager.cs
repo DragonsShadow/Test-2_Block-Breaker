@@ -56,7 +56,7 @@ namespace View
             IsWinLevel = true;
         }
 
-        public void NextLevelButtonAction()
+        public void ContinueButtonAction()
         {
             GameManager.PauseGame();
             DisableAllAfterWinOrLoseUiItems();
