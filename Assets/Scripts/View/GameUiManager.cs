@@ -36,7 +36,7 @@ namespace View
 
         private void Update()
         {
-            if (!IsStarted && !WinOrLoseDetector.IsFinishedGame && !_isPaused && !WinOrLoseDetector._isLose && !WinOrLoseDetector._isWinLevel)
+            if (!IsStarted && !WinOrLoseDetector.IsFinishedGame && !_isPaused && !WinOrLoseDetector.IsLose && !WinOrLoseDetector.IsWinLevel)
             {
                 LevelAndPhysicsGenerateDataManager.GameReset(player.transform, ball);
                 LevelAndPhysicsGenerateDataManager.GameStart(ball);

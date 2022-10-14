@@ -7,8 +7,8 @@ namespace View
 {
     public class WinOrLoseDetector : MonoBehaviour
     {
-        public static bool _isLose;
-        public static bool _isWinLevel;
+        public static bool IsLose;
+        public static bool IsWinLevel;
         public static bool IsFinishedGame;
 
         private PlayerScoreChangerAndDisplayer _playerScoreChangerAndDisplayer;
@@ -34,20 +34,20 @@ namespace View
 
         public static void LevelWinDetect()
         {
-            _isWinLevel = true;
+            IsWinLevel = true;
         }
 
         private void OnTriggerEnter2D(Collider2D col)
         {
             if (col.tag.Equals("Ground"))
             {
-                _isLose = true;
+                IsLose = true;
             }
         }
 
         private void Update()
         {
-            if (_isLose)
+            if (IsLose)
             {
                 endOfGame.text = "Freed From Mortal Ciol!";
                 endOfGameObject.SetActive(true);
@@ -55,12 +55,12 @@ namespace View
                 retryButton.SetActive(true);
                 returnToMainMenuButton.SetActive(true);
                 GameUiManager.PauseGame();
-                _isLose = false;
+                IsLose = false;
                 GameUiManager.IsStarted = false;
                 
             }
 
-            if (_isWinLevel && !IsFinishedGame)
+            if (IsWinLevel && !IsFinishedGame)
             {
                 endOfGame.text = "You May Live Longer!";
                 endOfGameObject.SetActive(true);
@@ -68,7 +68,7 @@ namespace View
                 nextLevelButton.SetActive(true);
                 returnToMainMenuButton.SetActive(true);
                 GameUiManager.PauseGame();
-                _isWinLevel = false;
+                IsWinLevel = false;
                 _playerScoreChangerAndDisplayer.PlayerStarAdd();
                 GameUiManager.IsStarted = false;
             }
@@ -82,7 +82,7 @@ namespace View
                 finishGameButton.SetActive(true);
                 nextLevelButton.SetActive(false);
                 GameUiManager.PauseGame();
-                _isWinLevel = false;
+                IsWinLevel = false;
                 GameUiManager.IsStarted = false;
                 GameUiManager.IsStarted = false;
                 IsFinishedGame = false;
