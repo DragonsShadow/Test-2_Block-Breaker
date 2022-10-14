@@ -36,14 +36,17 @@ namespace View
 
         private void Update()
         {
-            if (!WinOrLoseManager.IsStarted && !WinOrLoseManager.IsFinishedGame && !_isPaused &&
-                !WinOrLoseManager.IsLose && !WinOrLoseManager.IsWinLevel)
+            var isInPreStart = !WinOrLoseManager.IsStarted && !WinOrLoseManager.IsFinishedGame && !_isPaused &&
+                               !WinOrLoseManager.IsLose && !WinOrLoseManager.IsWinLevel;
+            if (isInPreStart)
             {
                 LevelObjectsMover.GameResetLocation(player.transform, ball);
                 LevelObjectsMover.GameStartMove(ball);
             }
 
-            if (DeployedBlocks <= 0 && !WinOrLoseManager.IsFinishedGame && WinOrLoseManager.IsStarted)
+            var isFinishedMoment =
+                DeployedBlocks <= 0 && !WinOrLoseManager.IsFinishedGame && WinOrLoseManager.IsStarted;
+            if (isFinishedMoment)
             {
                 WinOrLoseManager.LevelWinDetect();
                 NextLevelInitialises();
@@ -66,7 +69,7 @@ namespace View
         {
             _isPaused = GameBaseActioner.GamePause(_isPaused);
         }
-        
+
         private void LevelGenerate()
         {
             DeployedBlocks = 0;

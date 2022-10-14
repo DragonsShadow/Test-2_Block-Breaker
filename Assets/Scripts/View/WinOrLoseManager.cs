@@ -27,47 +27,22 @@ namespace View
             _playerScoreChangerAndDisplayer = new PlayerScoreChangerAndDisplayer();
             _playerScoreChangerAndDisplayer.PlyerScoreLoadData();
         }
-        
+
         private void Update()
         {
             if (IsLose)
             {
-                endOfGame.text = "Freed From Mortal Ciol!";
-                IsLose = false;
-                endOfGameObject.SetActive(true);
-                background.SetActive(true);
-                retryButton.SetActive(true);
-                returnToMainMenuButton.SetActive(true);
-                GameManager.PauseGame();
-                IsStarted = false;
-                
+                ActionWhenGameLose();
             }
 
             if (IsWinLevel && !IsFinishedGame)
             {
-                endOfGame.text = "You May Live Longer!";
-                endOfGameObject.SetActive(true);
-                background.SetActive(true);
-                nextLevelButton.SetActive(true);
-                returnToMainMenuButton.SetActive(true);
-                GameManager.PauseGame();
-                IsWinLevel = false;
-                _playerScoreChangerAndDisplayer.PlayerStarAdd();
-                IsStarted = false;
+                ActionWhenLevelWin();
             }
 
             if (IsFinishedGame)
             {
-                endOfGame.text = "Just Goooo";
-                endOfGameObject.SetActive(true);
-                background.SetActive(true);
-                returnToMainMenuButton.SetActive(false);
-                finishGameButton.SetActive(true);
-                GameManager.PauseGame();
-                IsWinLevel = false;
-                IsStarted = false;
-                IsStarted = false;
-                IsFinishedGame = false;
+                ActionWhenGameWin();
             }
         }
 
@@ -96,7 +71,6 @@ namespace View
 
         public void ReturnToMainMenuAction()
         {
-            
             GameManager.PauseGame();
             SceneManager.LoadScene("MainMenu");
         }
@@ -106,13 +80,52 @@ namespace View
             _playerScoreChangerAndDisplayer.PlayerStarAdd();
             ReturnToMainMenuAction();
         }
-        
+
         private void OnTriggerEnter2D(Collider2D col)
         {
             if (col.tag.Equals("Ground"))
             {
                 IsLose = true;
             }
+        }
+
+        private void ActionWhenGameLose()
+        {
+            endOfGame.text = "Freed From Mortal Ciol!";
+            IsLose = false;
+            endOfGameObject.SetActive(true);
+            background.SetActive(true);
+            retryButton.SetActive(true);
+            returnToMainMenuButton.SetActive(true);
+            GameManager.PauseGame();
+            IsStarted = false;
+        }
+
+        private void ActionWhenLevelWin()
+        {
+            endOfGame.text = "You May Live Longer!";
+            endOfGameObject.SetActive(true);
+            background.SetActive(true);
+            nextLevelButton.SetActive(true);
+            returnToMainMenuButton.SetActive(true);
+            GameManager.PauseGame();
+            IsWinLevel = false;
+            _playerScoreChangerAndDisplayer.PlayerStarAdd();
+            IsStarted = false;
+        }
+
+        private void ActionWhenGameWin()
+        {
+            endOfGame.text = "Just Goooo";
+            endOfGameObject.SetActive(true);
+            background.SetActive(true);
+            returnToMainMenuButton.SetActive(false);
+            finishGameButton.SetActive(true);
+            GameManager.PauseGame();
+            IsWinLevel = false;
+            IsStarted = false;
+            IsStarted = false;
+            IsFinishedGame = false;
         }
 
         private void DisableAllAfterWinOrLoseUiItems()
