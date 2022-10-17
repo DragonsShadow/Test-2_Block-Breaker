@@ -27,7 +27,26 @@ namespace Editor
         private void OnGUI()
         {
             EditorGUILayout.BeginHorizontal();
+            
             EditorGUILayout.BeginVertical();
+
+            ObjectButtonsActions();
+
+            EditorGUILayout.EndVertical();
+
+            EditorGUILayout.BeginVertical();
+
+            LevelButtunsActions();
+
+            EditorGUILayout.EndVertical();
+
+            BlockButtonsActions();
+
+            EditorGUILayout.EndHorizontal();
+        }
+
+        private void ObjectButtonsActions()
+        {
             foreach (var gameObject in Resources.LoadAll<GameObject>("Prefabs/Blocks"))
             {
                 if (GUILayout.Button(gameObject.GetComponent<SpriteRenderer>().sprite.texture))
@@ -35,40 +54,45 @@ namespace Editor
                     Selection.activeObject = gameObject;
                 }
             }
+        }
 
-            EditorGUILayout.EndVertical();
-            EditorGUILayout.BeginVertical();
+        private void LevelButtunsActions()
+        {
             for (int temp = 0; temp < LevelManageData.LevelNumber; temp++)
             {
-                if (GUILayout.Button("Level "+(temp + 1).ToString()))
+                if (GUILayout.Button("Level " + (temp + 1).ToString()))
                 {
                     _levelNumber = temp;
                 }
             }
-            EditorGUILayout.EndVertical();
+        }
+
+        private void BlockButtonsActions()
+        {
             for (int y = 0; y < Level.BlockColumns; y++)
             {
                 EditorGUILayout.BeginVertical();
                 for (int x = 0; x < Level.BlockRows; x++)
                 {
-                    if (_levelManageData.levels[_levelNumber].Blocks[x,y] == null)
+                    if (_levelManageData.levels[_levelNumber].Blocks[x, y] == null)
                     {
-                        if (GUILayout.Button("Block "+((y+1)*(x+1))))
+                        if (GUILayout.Button("Block " + ((y + 1) * (x + 1))))
                         {
                             _levelManageData.levels[_levelNumber].Blocks[x, y] = (GameObject)Selection.activeObject;
                         }
                     }
                     else
                     {
-                        if ( GUILayout.Button(_levelManageData.levels[_levelNumber].Blocks[x,y].GetComponent<SpriteRenderer>().sprite.texture))
+                        if (GUILayout.Button(_levelManageData.levels[_levelNumber].Blocks[x, y]
+                                .GetComponent<SpriteRenderer>().sprite.texture))
                         {
                             _levelManageData.levels[_levelNumber].Blocks[x, y] = (GameObject)Selection.activeObject;
                         }
                     }
                 }
+
                 EditorGUILayout.EndVertical();
             }
-            EditorGUILayout.EndHorizontal();
         }
     }
 }
