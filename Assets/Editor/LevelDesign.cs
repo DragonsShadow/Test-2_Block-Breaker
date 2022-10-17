@@ -9,6 +9,7 @@ namespace Editor
         private int _screenWidth = 1500;
         private int _screenLength = 1100;
         public LevelManageData _levelManageData;
+        private int _levelNumber;
 
         [MenuItem("LevelDesign/LevelDesign")]
         public static void ShowWindow()
@@ -29,14 +30,20 @@ namespace Editor
             EditorGUILayout.BeginVertical();
             foreach (var gameObject in Resources.LoadAll<GameObject>("Prefabs/Blocks"))
             {
-                GUILayout.Button(gameObject.GetComponent<SpriteRenderer>().sprite.texture);
+                if (GUILayout.Button(gameObject.GetComponent<SpriteRenderer>().sprite.texture))
+                {
+                    Selection.activeObject = gameObject;
+                }
             }
 
             EditorGUILayout.EndVertical();
             EditorGUILayout.BeginVertical();
             for (int temp = 0; temp < LevelManageData.LevelNumber; temp++)
             {
-                GUILayout.Button((temp + 1).ToString());
+                if (GUILayout.Button((temp + 1).ToString()))
+                {
+                    _levelNumber = temp;
+                }
             }
             EditorGUILayout.EndVertical();
             for (int y = 0; y < Level.BlockColumns; y++)
@@ -44,9 +51,21 @@ namespace Editor
                 EditorGUILayout.BeginVertical();
                 for (int x = 0; x < Level.BlockRows; x++)
                 {
-                    GUILayout.Button("Blcok "+((y+1)*(x+1)));
+                    if (_levelManageData.levels[_levelNumber].Blocks[x,y] == null)
+                    {
+                        if (GUILayout.Button("Block "+((y+1)*(x+1))))
+                        {
+                            _levelManageData.levels[_levelNumber].Blocks[x, y] = (GameObject)Selection.activeObject;
+                        }
+                    }
+                    else
+                    {
+                        if ( GUILayout.Button(_levelManageData.levels[_levelNumber].Blocks[x,y].GetComponent<SpriteRenderer>().sprite.texture))
+                        {
+                            _levelManageData.levels[_levelNumber].Blocks[x, y] = (GameObject)Selection.activeObject;
+                        }
+                    }
                 }
-
                 EditorGUILayout.EndVertical();
             }
             EditorGUILayout.EndHorizontal();
