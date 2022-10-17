@@ -40,7 +40,7 @@ namespace Editor
             EditorGUILayout.BeginVertical();
             for (int temp = 0; temp < LevelManageData.LevelNumber; temp++)
             {
-                if (GUILayout.Button((temp + 1).ToString()))
+                if (GUILayout.Button("Level "+(temp + 1).ToString()))
                 {
                     _levelNumber = temp;
                 }
