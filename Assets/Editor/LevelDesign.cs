@@ -8,7 +8,7 @@ namespace Editor
     {
         private int _screenWidth = 1500;
         private int _screenLength = 1100;
-        public LevelManageData _levelManageData;
+        public LevelManageData levelManageData;
         private int _levelNumber;
 
         [MenuItem("LevelDesign/LevelDesign")]
@@ -19,8 +19,8 @@ namespace Editor
 
         private void OnEnable()
         {
-            _levelManageData = CreateInstance<LevelManageData>();
-            _levelManageData = Resources.Load<LevelManageData>("LevelManageDatas/LevelmanageData");
+            levelManageData = CreateInstance<LevelManageData>();
+            levelManageData = Resources.Load<LevelManageData>("LevelManageDatas/LevelmanageData");
             position = new Rect(position.center.x, position.center.y, _screenWidth, _screenLength);
         }
 
@@ -74,19 +74,19 @@ namespace Editor
                 EditorGUILayout.BeginVertical();
                 for (int x = 0; x < Level.BlockRows; x++)
                 {
-                    if (_levelManageData.levels[_levelNumber].Blocks[x, y] == null)
+                    if (levelManageData.levels[_levelNumber].Blocks[x, y] == null)
                     {
                         if (GUILayout.Button("Block " + ((y + 1) * (x + 1))))
                         {
-                            _levelManageData.levels[_levelNumber].Blocks[x, y] = (GameObject)Selection.activeObject;
+                            levelManageData.levels[_levelNumber].Blocks[x, y] = (GameObject)Selection.activeObject;
                         }
                     }
                     else
                     {
-                        if (GUILayout.Button(_levelManageData.levels[_levelNumber].Blocks[x, y]
+                        if (GUILayout.Button(levelManageData.levels[_levelNumber].Blocks[x, y]
                                 .GetComponent<SpriteRenderer>().sprite.texture))
                         {
-                            _levelManageData.levels[_levelNumber].Blocks[x, y] = (GameObject)Selection.activeObject;
+                            levelManageData.levels[_levelNumber].Blocks[x, y] = (GameObject)Selection.activeObject;
                         }
                     }
                 }
