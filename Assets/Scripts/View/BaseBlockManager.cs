@@ -7,13 +7,14 @@ namespace View
     {
         private int _blockHealth = 1;
         private PlayerScoreChangerAndDisplayer _playerScoreChangerAndDisplayer;
-
+        
+        
         private void OnCollisionEnter2D(Collision2D block)
         {
             if (block.collider.tag.Equals("Ball"))
             {
                 _blockHealth -= 1;
-                GameManager.DeployedBlocks -= 1;
+                GameManager.DecreaseBlock();
                 DestroyCheck();
             }
         }

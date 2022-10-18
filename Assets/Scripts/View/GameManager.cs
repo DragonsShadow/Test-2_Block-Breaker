@@ -44,14 +44,6 @@ namespace View
                 LevelObjectsMover.GameStartMove(ball);
             }
 
-            var isFinishedMoment =
-                DeployedBlocks <= 0 && !WinOrLoseManager.IsFinishedGame && WinOrLoseManager.IsStarted;
-            if (isFinishedMoment)
-            {
-                WinOrLoseManager.LevelWinDetect();
-                NextLevelInitialises();
-            }
-
             var isContinuedAndAllowed = WinOrLoseManager.IsContinued && _levelNumber < LevelManageData.LevelNumber;
             if (isContinuedAndAllowed)
             {
@@ -61,7 +53,24 @@ namespace View
             }
         }
 
-        private void NextLevelInitialises()
+        public static void DecreaseBlock()
+        {
+            DeployedBlocks -= 1;
+            DetectWin();
+        }
+
+        private static void DetectWin()
+        {
+            var isFinishedMoment =
+                DeployedBlocks <= 0 && !WinOrLoseManager.IsFinishedGame ;
+            if (isFinishedMoment)
+            {
+                WinOrLoseManager.LevelWinDetect();
+                NextLevelInitialises();
+            }
+        }
+
+        private static void NextLevelInitialises()
         {
             WinOrLoseManager.IsStarted = false;
             LevelNumber++;
@@ -100,6 +109,8 @@ namespace View
                     _tempTransformForSpawn.z);
                 _tempTransformForSpawn += new Vector3(0, -1, 0);
             }
+            DetectWin();
         }
+        
     }
 }
