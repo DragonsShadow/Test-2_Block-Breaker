@@ -1,4 +1,5 @@
 using Model;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -6,7 +7,7 @@ namespace Logic
 {
     public class PlayerScoreChangerAndDisplayer
     {
-        private static PlayerScores _playerScores = ScriptableObject.CreateInstance<PlayerScores>();
+        private PlayerScores _playerScores;
 
         public void PlyerScoreLoadData()
         {
@@ -16,11 +17,13 @@ namespace Logic
         public void PlayerScoreAdd()
         {
             _playerScores.Score++;
+            EditorUtility.SetDirty(_playerScores);
         }
 
         public void PlayerStarAdd()
         {
             _playerScores.Star++;
+            EditorUtility.SetDirty(_playerScores);
         }
 
         public void PlayerScoresShow(Text score, Text star)

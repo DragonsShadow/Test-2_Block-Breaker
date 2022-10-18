@@ -5,23 +5,23 @@ namespace Model
     [CreateAssetMenu(fileName = "PlayerScores", menuName = "PlayerScores", order = 0)]
     public class PlayerScores : ScriptableObject
     {
-        private static int _score;
+        [SerializeField, HideInInspector] private int score;
         //score based on destroyed blocks
 
-        private static int _star;
+        [SerializeField, HideInInspector] private int star;
         //score based on past levels
 
 
         public int Score
         {
-            get => _score;
-            set => _score = value;
+            get => score;
+            set => score = value;
         }
 
         public int Star
         {
-            get => _star;
-            set => _star = value;
+            get => star;
+            set => star = value;
         }
     }
 }

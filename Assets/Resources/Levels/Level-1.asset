@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tempBlocks:
   - blocks:
-    - {fileID: 2578683507947988142, guid: a8559b271ab6ebb41a0d5ffe26996479, type: 3}
+    - {fileID: 0}
     - {fileID: 0}
     - {fileID: 0}
     - {fileID: 0}
