@@ -27,7 +27,7 @@ namespace Editor
         private void OnGUI()
         {
             EditorGUILayout.BeginHorizontal();
-            
+
             EditorGUILayout.BeginVertical();
 
             ObjectButtonsActions();
@@ -54,6 +54,11 @@ namespace Editor
                     Selection.activeObject = gameObject;
                 }
             }
+
+            if (GUILayout.Button("Null"))
+            {
+                Selection.activeObject = null;
+            }
         }
 
         private void LevelButtunsActions()
@@ -76,7 +81,7 @@ namespace Editor
                 {
                     if (levelManageData.levels[_levelNumber].Blocks[x, y] == null)
                     {
-                        if (GUILayout.Button("Block " + ((y + 1) * (x + 1))))
+                        if (GUILayout.Button("Empty Block"))
                         {
                             levelManageData.levels[_levelNumber].Blocks[x, y] = (GameObject)Selection.activeObject;
                         }
