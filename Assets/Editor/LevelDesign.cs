@@ -41,14 +41,14 @@ namespace Editor
             EditorGUILayout.EndVertical();
 
             EditorGUILayout.Space(_spaceBetweenTables);
-            
+
             EditorGUILayout.BeginVertical();
 
             GUILayout.Label("Choose your Levels");
             LevelButtunsActions();
 
             EditorGUILayout.EndVertical();
-            
+
             EditorGUILayout.Space(_spaceBetweenTables);
 
             EditorGUILayout.BeginVertical(GUILayout.Height(175));
