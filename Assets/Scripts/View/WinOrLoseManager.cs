@@ -59,6 +59,7 @@ namespace View
 
         public void ContinueButtonAction()
         {
+            AudioManager.PlayButtonEffect();
             IsContinued = true;
             GameManager.PauseGame();
             DisableAllAfterWinOrLoseUiItems();
@@ -66,6 +67,7 @@ namespace View
 
         public void RetryButtonAction()
         {
+            AudioManager.PlayButtonEffect();
             GameManager.PauseGame();
             GameManager.LevelNumber = 0;
             SceneManager.LoadScene("MainGame");
@@ -73,12 +75,14 @@ namespace View
 
         public void ReturnToMainMenuButtonAction()
         {
+            AudioManager.PlayButtonEffect();
             GameManager.PauseGame();
             SceneManager.LoadScene("MainMenu");
         }
 
         public void FinishGameButtonAction()
         {
+            AudioManager.PlayButtonEffect();
             _playerScoreChangerAndDisplayer.PlayerStarAdd();
             ReturnToMainMenuButtonAction();
         }

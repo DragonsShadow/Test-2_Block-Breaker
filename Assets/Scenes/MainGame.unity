@@ -375,6 +375,18 @@ MonoBehaviour:
   returnToMainMenuButton: {fileID: 222404844}
   nextLevelButton: {fileID: 2019930176}
   finishGameButton: {fileID: 866245531}
+--- !u!114 &127115059
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 127115057}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e70ef348006448d0bb125268a56b9546, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &142352465
 GameObject:
   m_ObjectHideFlags: 0
@@ -953,6 +965,18 @@ MonoBehaviour:
       - m_Target: {fileID: 821775784}
         m_TargetAssemblyTypeName: View.GameUiManager, Assembly-CSharp
         m_MethodName: PauseGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 821775784}
+        m_TargetAssemblyTypeName: View.GameManager, Assembly-CSharp
+        m_MethodName: PauseGameSound
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1728,7 +1752,7 @@ GameObject:
   - component: {fileID: 821775784}
   - component: {fileID: 821775785}
   m_Layer: 0
-  m_Name: Game Managr
+  m_Name: Managers
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

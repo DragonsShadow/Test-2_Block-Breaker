@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 namespace View
 {
-    public class MainMenuUiManager : MonoBehaviour
+    public class MenuUiManager : MonoBehaviour
     {
         public Text score;
         public Text star;
@@ -26,26 +26,31 @@ namespace View
 
         public void GameStart()
         {
+            AudioManager.PlayButtonEffect();
             StartAnimationChange(menuObjectsanimator, colorAnimator);
         }
 
         public void LevelSelect(Text levelNumber)
         {
+            AudioManager.PlayButtonEffect();
             LevelSelector.Levechange(levelNumber);
         }
 
         public void SettingIntraction()
         {
+            AudioManager.PlayButtonEffect();
             SettingAnimationChange(menuObjectsanimator);
         }
 
         public void GameQuit()
         {
+            AudioManager.PlayButtonEffect();
             Application.Quit();
         }
 
         public void BackButton()
         {
+            AudioManager.PlayButtonEffect();
             BackFromMenusAnimationChange(menuObjectsanimator, colorAnimator);
         }
 
@@ -68,5 +73,8 @@ namespace View
             backgroundAnimator.SetBool(StartBtn, false);
             animator.SetBool(SettingBtn, false);
         }
+
+        
+        
     }
 }
