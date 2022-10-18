@@ -14,9 +14,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tempBlocks:
   - blocks:
-    - {fileID: 6451304673201312702, guid: 763a8a42882fe65408b0557a9f79d9c4, type: 3}
     - {fileID: 0}
-    - {fileID: 6451304673201312702, guid: 763a8a42882fe65408b0557a9f79d9c4, type: 3}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+  - blocks:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
     - {fileID: 0}
     - {fileID: 0}
     - {fileID: 0}
@@ -26,15 +35,6 @@ MonoBehaviour:
     - {fileID: 0}
     - {fileID: 0}
     - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 6451304673201312702, guid: 763a8a42882fe65408b0557a9f79d9c4, type: 3}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-  - blocks:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 2578683507947988142, guid: a8559b271ab6ebb41a0d5ffe26996479, type: 3}
     - {fileID: 0}
     - {fileID: 0}
     - {fileID: 0}
