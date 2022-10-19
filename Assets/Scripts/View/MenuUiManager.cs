@@ -20,8 +20,8 @@ namespace View
         private void Start()
         {
             _playerScoreChangerAndDisplayer = new PlayerScoreChangerAndDisplayer();
-            _playerScoreChangerAndDisplayer.PlyerScoreLoadData();
-            _playerScoreChangerAndDisplayer.PlayerScoresShow(score, star);
+            _playerScoreChangerAndDisplayer.LoadPlyerScoreData();
+            _playerScoreChangerAndDisplayer.ShowPlayerScores(score, star);
         }
 
         public void GameStart()
@@ -30,10 +30,10 @@ namespace View
             StartAnimationChange(menuObjectsanimator, colorAnimator);
         }
 
-        public void LevelSelect(Text levelNumber)
+        public void SelectLevel(Text levelNumber)
         {
             AudioManager.PlayButtonEffect();
-            LevelSelector.Levechange(levelNumber);
+            LevelSelector.ChangeLevel(levelNumber);
         }
 
         public void SettingIntraction()

@@ -32,10 +32,10 @@ namespace View
 
         private void Start()
         {
-            playMusic("MainTheme");
+            PlayMusic("MainTheme");
         }
 
-        public void playMusic(string name)
+        public void PlayMusic(string name)
         {
             Sound sound = Array.Find(sounds, sound => sound.name == name);
             sound.audioSource.Play();
@@ -43,12 +43,12 @@ namespace View
 
         public static void PlayButtonEffect()
         {
-            FindObjectOfType<AudioManager>().playMusic("Button");
+            FindObjectOfType<AudioManager>().PlayMusic("Button");
         }
 
         public static void PlayNormalColide()
         {
-            FindObjectOfType<AudioManager>().playMusic("Colide");
+            FindObjectOfType<AudioManager>().PlayMusic("Colide");
         }
     }
 }

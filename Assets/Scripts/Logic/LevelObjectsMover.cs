@@ -40,7 +40,7 @@ namespace Logic
             }
         }
 
-        public static void BallMovementEnhance(Transform player, Collision2D ball)
+        public static void EnhanceBallMovement(Transform player, Collision2D ball)
         {
             if (player.localPosition.x > ball.transform.localPosition.x)
             {

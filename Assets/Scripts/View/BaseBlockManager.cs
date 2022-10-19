@@ -15,11 +15,11 @@ namespace View
             {
                 _blockHealth -= 1;
                 GameManager.DecreaseBlock();
-                DestroyCheck();
+                CheckDestroy();
             }
         }
 
-        void DestroyCheck()
+        void CheckDestroy()
         {
             if (_blockHealth <= 0)
             {
@@ -31,8 +31,8 @@ namespace View
         void AddToScore()
         {
             _playerScoreChangerAndDisplayer = new PlayerScoreChangerAndDisplayer();
-            _playerScoreChangerAndDisplayer.PlyerScoreLoadData();
-            _playerScoreChangerAndDisplayer.PlayerScoreAdd();
+            _playerScoreChangerAndDisplayer.LoadPlyerScoreData();
+            _playerScoreChangerAndDisplayer.AddPlayerScore();
         }
     }
 }

@@ -30,7 +30,7 @@ namespace View
 
         private void Start()
         {
-            LevelGenerate();
+            GenerateLevel();
             LevelObjectsMover.GameResetLocation(player.transform, ball);
         }
 
@@ -48,7 +48,7 @@ namespace View
             if (isContinuedAndAllowed)
             {
                 WinOrLoseManager.IsContinued = false;
-                LevelGenerate();
+                GenerateLevel();
                 LevelObjectsMover.GameResetLocation(player.transform, ball);
             }
         }
@@ -65,7 +65,7 @@ namespace View
                 DeployedBlocks <= 0 && !WinOrLoseManager.IsFinishedGame ;
             if (isFinishedMoment)
             {
-                WinOrLoseManager.LevelWinDetect();
+                WinOrLoseManager.DetectLevelWin();
                 NextLevelInitialises();
             }
         }
@@ -76,16 +76,16 @@ namespace View
             LevelNumber++;
             if (LevelNumber >= LevelManageData.LevelNumber)
             {
-                WinOrLoseManager.GameWinDetect();
+                WinOrLoseManager.DetectGameWin();
             }
         }
 
         public static void PauseGame()
         {
-            _isPaused = GameBaseActioner.GamePause(_isPaused);
+            _isPaused = GameBaseActioner.PauseGame(_isPaused);
         }
 
-        private void LevelGenerate()
+        private void GenerateLevel()
         {
             DeployedBlocks = 0;
             levelNumber.text = (LevelNumber + 1).ToString();
@@ -94,7 +94,7 @@ namespace View
             {
                 for (int j = 0; j < Level.BlockColumns; j++)
                 {
-                    LevelGenerateDataSender.LevelGenerateData(LevelNumber);
+                    LevelGenerateDataSender.GenerateLevelData(LevelNumber);
                     if (LevelGenerateDataSender.TempCreatingBlock != null)
                     {
                         Instantiate(LevelGenerateDataSender.TempCreatingBlock, _tempTransformForSpawn,

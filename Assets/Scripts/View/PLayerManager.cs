@@ -32,7 +32,7 @@ namespace View
         {
             if (collision2dObject.collider.tag.Equals("Ball"))
             {
-                LevelObjectsMover.BallMovementEnhance(transform, collision2dObject);
+                LevelObjectsMover.EnhanceBallMovement(transform, collision2dObject);
             }
         }
     }

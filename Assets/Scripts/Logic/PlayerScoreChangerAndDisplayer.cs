@@ -9,24 +9,24 @@ namespace Logic
     {
         private PlayerScores _playerScores;
 
-        public void PlyerScoreLoadData()
+        public void LoadPlyerScoreData()
         {
             _playerScores = Resources.Load<PlayerScores>("PlayerScores/PlayerScores");
         }
 
-        public void PlayerScoreAdd()
+        public void AddPlayerScore()
         {
             _playerScores.Score++;
             EditorUtility.SetDirty(_playerScores);
         }
 
-        public void PlayerStarAdd()
+        public void AddPlayerStar()
         {
             _playerScores.Star++;
             EditorUtility.SetDirty(_playerScores);
         }
 
-        public void PlayerScoresShow(Text score, Text star)
+        public void ShowPlayerScores(Text score, Text star)
         {
             score.text = _playerScores.Score.ToString();
             star.text = _playerScores.Star.ToString();

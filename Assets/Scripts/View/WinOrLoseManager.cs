@@ -26,7 +26,7 @@ namespace View
         private void Start()
         {
             _playerScoreChangerAndDisplayer = new PlayerScoreChangerAndDisplayer();
-            _playerScoreChangerAndDisplayer.PlyerScoreLoadData();
+            _playerScoreChangerAndDisplayer.LoadPlyerScoreData();
         }
 
         private void Update()
@@ -47,12 +47,12 @@ namespace View
             }
         }
 
-        public static void GameWinDetect()
+        public static void DetectGameWin()
         {
             IsFinishedGame = true;
         }
 
-        public static void LevelWinDetect()
+        public static void DetectLevelWin()
         {
             IsWinLevel = true;
         }
@@ -83,7 +83,7 @@ namespace View
         public void FinishGameButtonAction()
         {
             AudioManager.PlayButtonEffect();
-            _playerScoreChangerAndDisplayer.PlayerStarAdd();
+            _playerScoreChangerAndDisplayer.AddPlayerStar();
             ReturnToMainMenuButtonAction();
         }
 
@@ -116,7 +116,7 @@ namespace View
             returnToMainMenuButton.SetActive(true);
             GameManager.PauseGame();
             IsWinLevel = false;
-            _playerScoreChangerAndDisplayer.PlayerStarAdd();
+            _playerScoreChangerAndDisplayer.AddPlayerStar();
             IsStarted = false;
         }
 

@@ -208,7 +208,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1037488695}
         m_TargetAssemblyTypeName: View.UiManager, Assembly-CSharp
-        m_MethodName: LevelSelect
+        m_MethodName: SelectLevel
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 315130311}
@@ -1142,7 +1142,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1037488695}
         m_TargetAssemblyTypeName: View.UiManager, Assembly-CSharp
-        m_MethodName: LevelSelect
+        m_MethodName: SelectLevel
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 2016239213}
@@ -1567,7 +1567,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1037488695}
         m_TargetAssemblyTypeName: View.UiManager, Assembly-CSharp
-        m_MethodName: LevelSelect
+        m_MethodName: SelectLevel
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 268774624}
@@ -2500,7 +2500,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1037488695}
         m_TargetAssemblyTypeName: View.UiManager, Assembly-CSharp
-        m_MethodName: LevelSelect
+        m_MethodName: SelectLevel
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 598678133}
@@ -2896,7 +2896,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1037488695}
         m_TargetAssemblyTypeName: View.UiManager, Assembly-CSharp
-        m_MethodName: LevelSelect
+        m_MethodName: SelectLevel
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 847662595}

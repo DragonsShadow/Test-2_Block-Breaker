@@ -10,7 +10,7 @@ namespace Logic
         private static int _tempCreatingDataBlockObjectNumber;
         private static int _tempCreatingDataBlockRowNumber;
 
-        public static void LevelGenerateData(int levelNumber)
+        public static void GenerateLevelData(int levelNumber)
         {
             _levelManageData = ScriptableObject.CreateInstance<LevelManageData>();
             _levelManageData = Resources.Load<LevelManageData>("LevelManageDatas/LevelManageData");

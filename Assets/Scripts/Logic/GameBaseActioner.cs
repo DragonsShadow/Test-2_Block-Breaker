@@ -4,7 +4,7 @@ namespace Logic
 {
     public class GameBaseActioner
     {
-        public static bool GamePause(bool isPaused)
+        public static bool PauseGame(bool isPaused)
         {
             isPaused = !isPaused;
             if (Time.timeScale >= 1)
