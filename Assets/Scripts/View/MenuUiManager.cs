@@ -17,9 +17,12 @@ namespace View
         private static readonly int StartBtn = Animator.StringToHash("Start");
         private static readonly int SettingBtn = Animator.StringToHash("Setting");
 
-        private void Start()
+        private void Awake()
         {
             SetScreenSize();
+        }
+        private void Start()
+        {
             _playerScoreChangerAndDisplayer = new PlayerScoreChangerAndDisplayer();
             _playerScoreChangerAndDisplayer.LoadPlyerScoreData();
             _playerScoreChangerAndDisplayer.ShowPlayerScores(score, star);

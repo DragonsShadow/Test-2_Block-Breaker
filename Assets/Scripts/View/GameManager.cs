@@ -1,3 +1,4 @@
+using System;
 using Logic;
 using Model;
 using UnityEngine;
@@ -29,9 +30,13 @@ namespace View
         }
 
 
-        private void Start()
+        private void Awake()
         {
             SetScreenSize();
+        }
+
+        private void Start()
+        {
             GenerateLevel();
             LevelObjectsMover.GameResetLocation(player.transform, ball);
         }
