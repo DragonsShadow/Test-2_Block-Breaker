@@ -9,6 +9,7 @@ namespace Logic
         private static PlayerModel _playerModel;
         private static BallModel _ballModel;
 
+
         public static void GameResetLocation(Transform player, Rigidbody2D ball)
         {
             _playerModel = Resources.Load<PlayerModel>("GameConfigs/PlayerModel");
@@ -20,7 +21,7 @@ namespace Logic
 
         public static void GameStartMove(Rigidbody2D ball)
         {
-            if (Input.GetKey(KeyCode.Space))
+            if (Input.GetKey(KeyCode.Space) || Input.touchCount > 1)
             {
                 WinOrLoseManager.IsStarted = true;
                 BallFisrtMovement(ball);
@@ -29,12 +30,13 @@ namespace Logic
 
         public static void PlayerMovement(Transform player)
         {
-            if (Input.GetKey("d"))
+            SetTouchPosition();
+            if (Input.GetKey("d") || GameManager.Touch.position.x > 0)
             {
                 player.localPosition += _playerModel.playerSpeed * Time.deltaTime;
             }
 
-            if (Input.GetKey("a"))
+            if (Input.GetKey("a") || GameManager.Touch.position.x < 0)
             {
                 player.localPosition -= _playerModel.playerSpeed * Time.deltaTime;
             }
@@ -58,6 +60,16 @@ namespace Logic
             ball.AddForce(_ballModel.ballFirstSpeed);
             ball.AddForce(
                 new Vector3(Random.Range(_ballModel.minimumHorizontalRange, _ballModel.maximumHorizontalRange), 0, 0));
+        }
+
+        private static void SetTouchPosition()
+        {
+            if (Input.touchCount > 0)
+            {
+                GameManager.Touch = Input.GetTouch(0);
+                if (Camera.main != null)
+                    GameManager.Touch.position = Camera.main.ScreenToWorldPoint(GameManager.Touch.position);
+            }
         }
     }
 }

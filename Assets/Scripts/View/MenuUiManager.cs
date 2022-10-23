@@ -19,6 +19,7 @@ namespace View
 
         private void Start()
         {
+            SetScreenSize();
             _playerScoreChangerAndDisplayer = new PlayerScoreChangerAndDisplayer();
             _playerScoreChangerAndDisplayer.LoadPlyerScoreData();
             _playerScoreChangerAndDisplayer.ShowPlayerScores(score, star);
@@ -74,7 +75,10 @@ namespace View
             animator.SetBool(SettingBtn, false);
         }
 
-        
-        
+        private void SetScreenSize()
+        {
+            Screen.orientation = ScreenOrientation.Landscape;
+            Screen.SetResolution(1920, 1080, true);
+        }
     }
 }

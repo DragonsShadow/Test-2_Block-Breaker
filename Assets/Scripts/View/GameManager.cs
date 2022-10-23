@@ -8,6 +8,7 @@ namespace View
     public class GameManager : MonoBehaviour
     {
         public static int DeployedBlocks;
+        public static Touch Touch;
 
         public Text levelNumber;
 
@@ -30,6 +31,7 @@ namespace View
 
         private void Start()
         {
+            SetScreenSize();
             GenerateLevel();
             LevelObjectsMover.GameResetLocation(player.transform, ball);
         }
@@ -62,7 +64,7 @@ namespace View
         private static void DetectWin()
         {
             var isFinishedMoment =
-                DeployedBlocks <= 0 && !WinOrLoseManager.IsFinishedGame ;
+                DeployedBlocks <= 0 && !WinOrLoseManager.IsFinishedGame;
             if (isFinishedMoment)
             {
                 WinOrLoseManager.DetectLevelWin();
@@ -109,8 +111,14 @@ namespace View
                     _tempTransformForSpawn.z);
                 _tempTransformForSpawn += new Vector3(0, -1, 0);
             }
+
             DetectWin();
         }
-        
+
+        private void SetScreenSize()
+        {
+            Screen.orientation = ScreenOrientation.Landscape;
+            Screen.SetResolution(1920, 1080, true);
+        }
     }
 }
