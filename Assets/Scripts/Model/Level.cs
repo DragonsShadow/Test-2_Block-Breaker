@@ -37,7 +37,9 @@ namespace Model
             }
 
             //only premetive types gets dirty automatically
+#if UNITY_EDITOR
             EditorUtility.SetDirty(this);
+#endif
         }
 
         public void OnAfterDeserialize()

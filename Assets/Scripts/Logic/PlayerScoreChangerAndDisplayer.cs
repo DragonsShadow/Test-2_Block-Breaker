@@ -17,13 +17,17 @@ namespace Logic
         public void AddPlayerScore()
         {
             _playerScores.Score++;
+#if UNITY_EDITOR
             EditorUtility.SetDirty(_playerScores);
+#endif
         }
 
         public void AddPlayerStar()
         {
             _playerScores.Star++;
+#if UNITY_EDITOR
             EditorUtility.SetDirty(_playerScores);
+#endif
         }
 
         public void ShowPlayerScores(Text score, Text star)
