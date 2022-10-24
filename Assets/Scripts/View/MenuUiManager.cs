@@ -1,3 +1,4 @@
+using System;
 using Logic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -26,6 +27,14 @@ namespace View
             _playerScoreChangerAndDisplayer = new PlayerScoreChangerAndDisplayer();
             _playerScoreChangerAndDisplayer.LoadPlyerScoreData();
             _playerScoreChangerAndDisplayer.ShowPlayerScores(score, star);
+        }
+
+        private void Update()
+        {
+            if (Input.GetKey(KeyCode.Escape))
+            {
+                BackButton();
+            }
         }
 
         public void GameStart()
