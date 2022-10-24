@@ -19,7 +19,7 @@ namespace Model
         [Serializable]
         private class BlockObjectRows
         {
-            [FormerlySerializedAs("Blocks")] public List<GameObject> blocks = new List<GameObject>();
+            public List<GameObject> blocks = new List<GameObject>();
         }
 
         public void OnBeforeSerialize()
